@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Set Username</title>
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Set Your Username</h1>
+        <p>Choose a unique username for your profile.</p>
+        <form id="set-username-form">
+            <div class="form-group">
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" required pattern="[a-zA-Z0-9_]{3,20}" title="Username must be 3-20 characters long and can only contain letters, numbers, and underscores.">
+                <small>Must be 3-20 characters (letters, numbers, underscores only).</small>
+            </div>
+            <button type="submit" id="set-username-button">Set Username & Continue</button>
+            <div id="error-message" class="error-message"></div>
+        </form>
+         <div class="links">
+            <button id="logout-button-alt" style="background: #aaa; width: auto; padding: 8px 15px;">Logout</button>
+        </div>
+    </div>
+
+    <!-- Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+    <!-- Set Username Logic -->
+    <script type="module" src="./js/setUsername.js"></script>
+</body>
+</html>
