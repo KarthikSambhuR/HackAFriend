@@ -13,7 +13,7 @@ export const firebaseConfig = {
 // For local testing (using Live Server default port):
 // export const actionCodeSettings = { url: 'http://127.0.0.1:5500/verify-email' };
 // For deployment (example):
-export const actionCodeSettings = { url: 'http://hackafriend.pages.dev/action' };
+export const actionCodeSettings = { url: 'http://hackafriend.fun/action' };
 
 // --- Application State Flags (using localStorage) ---
 export const USERNAME_SET_FLAG = 'app_usernameSet';
