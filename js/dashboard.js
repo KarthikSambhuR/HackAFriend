@@ -8,17 +8,13 @@ const welcomeMessage = document.getElementById('welcome-message');
 const errorMessage = document.getElementById('error-message');
 
 // Check auth state and profile completion on load
-auth.onAuthStateChanged(user => {
+auth.onAuthStateChanged(async user => {
     if (user) {
         // User is signed in.
         welcomeMessage.textContent = `Welcome, ${user.email}!`; // Display email for now
-
-        // Optional: Double check profile completion (mostly handled by auth.js redirects)
-        // if (!isUsernameSet() || !isDetailsSet()) {
-        //     console.warn("User on dashboard but profile flags not set. Redirecting might be needed.");
-        //     // Potentially force redirect here if auth.js somehow missed it
-        //     // window.location.href = !isUsernameSet() ? 'set-username' : 'user-details';
-        // }
+        if (!(await isUsernameSet(user.uid)) || !(await isDetailsSet(user.uid))) {
+            window.location.href = !(await isUsernameSet(user.uid)) ? 'set-username' : 'user-details';
+        }
 
     } else {
         // Not signed in - redirect handled by auth.js

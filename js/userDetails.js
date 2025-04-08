@@ -16,15 +16,16 @@ const skillsHiddenInput = document.getElementById('skills-hidden');
 let skillsList = []; // Array to hold the skills
 
 // Redirect if not logged in or username not set
-auth.onAuthStateChanged(user => {
+auth.onAuthStateChanged(async user => {
+    console.log(user.uid);
     if (!user) {
         window.location.href = 'login';
-    } else if (!isUsernameSet()) {
+    } else if (!(await isUsernameSet(user.uid))) {
          window.location.href = 'set-username';
     }
     // If details already set, redirect to dashboard (handled by auth.js, defensive)
     // else if (localStorage.getItem(DETAILS_SET_FLAG) === 'true') {
-    //     window.location.href = 'dashboard';
+    //     window.location.href = 'dashboard.html';
     // }
 });
 
@@ -143,7 +144,7 @@ userDetailsForm.addEventListener('submit', async (e) => {
         console.log("Details set flag saved to localStorage.");
 
         // Redirect to dashboard
-        window.location.href = 'index';
+        window.location.href = '';
 
     } catch (error) {
         console.error("Error saving user details:", error);
@@ -155,17 +156,65 @@ userDetailsForm.addEventListener('submit', async (e) => {
 });
 
 
-// --- Placeholder Function (Replace with actual D1 logic later) ---
 async function saveUserDetailsToDatabase(userId, details) {
-     console.warn(`Placeholder: Saving details for user ${userId}:`, details);
-     // Simulate network delay
-     await new Promise(resolve => setTimeout(resolve, 800));
-    // In real app: send data to backend/Cloud Function to save in D1. Example:
-    // await fetch('/api/save-profile', { method: 'POST', body: JSON.stringify({ userId, ...details }) });
-    return true; // Indicate success
-}
-// --- End Placeholder Function ---
+    const apiKey = userId;
+    const genderMap = {
+        'male': 1,
+        'female': 2,
+        'other': 3
+    };
 
+    // Convert data as per API spec
+    const payload = {
+        name: details.name,
+        phone_number: details.phone,
+        date_of_birth: details.dob,
+        gender: genderMap[details.gender],
+        college_id: getCollegeId(details.college),
+        course_id: getCourseId(details.course, details),
+        year_of_passing: parseInt(details.passing_year),
+        skills: details.skills.join(', ')
+    };
+
+    const response = await fetch('https://hackafriend.pixelplayz.workers.dev/set-user-details', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'api_key': apiKey
+        },
+        body: JSON.stringify(payload)
+    });
+
+    const result = await response.json();
+
+    if (result.status === 'ok') {
+        return true;
+    } else {
+        throw new Error(result.error || 'Unknown error from server');
+    }
+}
+
+function getCollegeId(collegeValue) {
+    const map = {
+        'ajce': 1
+    };
+    return map[collegeValue];
+}
+
+function getCourseId(courseValue, details) {
+    const map = {
+        'BCA': 1,
+        'MCA': 2,
+        'BTECH': 0,
+        'MTECH': 0
+    };
+
+    if (courseValue === 'BTECH' || courseValue === 'MTECH') {
+        return details['field_of_study'];
+    }
+
+    return map[courseValue];
+}
 
 function showError(message) {
     errorMessage.textContent = message;

@@ -30,43 +30,36 @@
                     <option value="male">Male</option>
                     <option value="female">Female</option>
                     <option value="other">Other</option>
-                    <option value="prefer_not_say">Prefer not to say</option>
                 </select>
             </div>
              <div class="form-group">
                 <label for="college">College:</label>
                  <select id="college" name="college" required>
                      <option value="" disabled selected>Select College...</option>
-                     <option value="college_a">College A</option>
-                     <option value="college_b">College B</option>
-                     <option value="college_c">College C</option>
-                     <option value="other">Other (Specify Below)</option>
+                     <option value="ajce">Amal Jyothi College Of Engineering</option>
                      <!-- Add more colleges -->
                  </select>
                  <input type="text" id="college_other" name="college_other" placeholder="Specify if 'Other'" style="display: none; margin-top: 5px;">
             </div>
             <div class="form-group">
                 <label for="course">Course:</label>
-                 <select id="course" name="course" required>
-                     <option value="" disabled selected>Select Course...</option>
-                     <option value="course_x">Course X (e.g., B.Tech)</option>
-                     <option value="course_y">Course Y (e.g., B.Sc)</option>
-                     <option value="course_z">Course Z (e.g., M.A)</option>
-                     <!-- Add more courses -->
-                 </select>
+                <select id="course" name="course" required>
+                    <option value="" disabled selected>Select Course...</option>
+                    <option value="BTECH">BTech</option>
+                    <option value="BCA">BCA</option>
+                    <option value="MTECH">MTech</option>
+                    <option value="MCA">MCA</option>
+                </select>
             </div>
-            <div class="form-group">
+            <!-- Field of Study -->
+            <div class="form-group" id="field-of-study-group">
                 <label for="field_of_study">Field of Study:</label>
-                 <select id="field_of_study" name="field_of_study" required>
-                     <option value="" disabled selected>Select Field...</option>
-                     <option value="cs">Computer Science</option>
-                     <option value="ee">Electrical Engineering</option>
-                     <option value="mech">Mechanical Engineering</option>
-                     <option value="arts">Arts</option>
-                     <option value="comm">Commerce</option>
-                     <!-- Add more fields -->
-                 </select>
+                <select id="field_of_study" name="field_of_study" required>
+                    <option value="" disabled selected>Select a course.</option>
+                </select>
             </div>
+              
+              
             <div class="form-group">
                 <label for="passing_year">Year of Passing:</label>
                 <input type="number" id="passing_year" name="passing_year" min="1980" max="2040" required>
@@ -88,6 +81,63 @@
             <button id="logout-button-alt" style="background: #aaa; width: auto; padding: 8px 15px;">Logout</button>
         </div>
     </div>
+
+    <script>
+        const courseSelect = document.getElementById('course');
+        const fieldGroup = document.getElementById('field-of-study-group');
+        const fieldSelect = document.getElementById('field_of_study');
+        
+        // Field options by course type
+        const fieldsByCourse = {
+          'BTECH': [ // BTech
+            { id: 3, name: "Artificial Intelligence & Data Science" },
+            { id: 4, name: "Chemical Engineering" },
+            { id: 5, name: "Civil Engineering" },
+            { id: 6, name: "Computer Science and Engineering" },
+            { id: 7, name: "Computer Science & Engineering (Artificial Intelligence)" },
+            { id: 8, name: "Computer Science and Engineering (Cyber Security)" },
+            { id: 9, name: "Electronics & Communication Engineering" },
+            { id: 10, name: "Electrical & Electronics Engineering" },
+            { id: 11, name: "Food Technology" },
+            { id: 12, name: "Information Technology" },
+            { id: 13, name: "Mechanical Engineering" },
+            { id: 14, name: "Mechanical Engineering (Automobile)" },
+            { id: 15, name: "Metallurgical & Materials Engineering" }
+          ],
+          'MTECH': [ // MTech
+            { id: 16, name: "Structural Engineering & Construction Management" },
+            { id: 17, name: "Computer Science and Engineering" },
+            { id: 18, name: "Energy Systems" },
+            { id: 19, name: "VLSI Design and Embedded Systems" },
+            { id: 20, name: "Electric Vehicle Technology" },
+            { id: 21, name: "Environmental Engineering" }
+          ]
+        };
+        
+        // Toggle and populate field dropdown
+        courseSelect.addEventListener('change', () => {
+          const selectedCourse = courseSelect.value;
+          
+          if (selectedCourse === 'BCA' || selectedCourse === 'MCA') {
+            // Hide field for BCA and MCA
+            fieldGroup.style.display = 'none';
+            fieldSelect.required = false;
+            fieldSelect.innerHTML = '';
+          } else {
+            fieldGroup.style.display = 'block';
+            fieldSelect.required = true;
+        
+            const fields = fieldsByCourse[selectedCourse] || [];
+            fieldSelect.innerHTML = `<option value="" disabled selected>Select Field...</option>`;
+            fields.forEach(f => {
+              const opt = document.createElement('option');
+              opt.value = f.id;
+              opt.textContent = f.name;
+              fieldSelect.appendChild(opt);
+            });
+          }
+        });
+    </script>
 
     <!-- Firebase -->
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
