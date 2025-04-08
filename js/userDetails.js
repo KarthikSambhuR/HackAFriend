@@ -196,7 +196,10 @@ async function saveUserDetailsToDatabase(userId, details) {
 
 function getCollegeId(collegeValue) {
     const map = {
-        'ajce': 1
+        'ajce': 1,
+        'cet': 2,
+        'bvm': 3,
+        'rit': 4
     };
     return map[collegeValue];
 }
