@@ -79,10 +79,10 @@ auth.onAuthStateChanged(async user => {
         } else if (usernameSet && !detailsSet && currentPage !== 'user-details') {
             console.log("Details not set, redirecting to user-details");
             window.location.href = 'user-details';
-        } else if (usernameSet && detailsSet && currentPage !== '') {
-            console.log("User logged in and profile complete, redirecting to ");
+        } else if (usernameSet && detailsSet && (currentPage !== 'index' && currentPage !== '')) {
+            console.log("User logged in and profile complete, redirecting to index");
             if (currentPage !== 'verify-email') {
-                window.location.href = '';
+                window.location.href = 'index';
             }
         } else {
             console.log("User logged in, staying on current page:", currentPage);
@@ -95,7 +95,7 @@ auth.onAuthStateChanged(async user => {
         localStorage.removeItem(DETAILS_SET_FLAG);
 
         // Define pages that require authentication
-        const protectedPages = ['', 'set-username', 'user-details', ''];
+        const protectedPages = ['index', 'set-username', 'user-details', ''];
 
         if (protectedPages.includes(currentPage)) {
             console.log("User is on a protected page, redirecting to login");

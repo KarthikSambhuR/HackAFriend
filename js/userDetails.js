@@ -144,7 +144,7 @@ userDetailsForm.addEventListener('submit', async (e) => {
         console.log("Details set flag saved to localStorage.");
 
         // Redirect to dashboard
-        window.location.href = '';
+        window.location.href = 'index';
 
     } catch (error) {
         console.error("Error saving user details:", error);
