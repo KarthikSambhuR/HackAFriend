@@ -192,7 +192,8 @@
     "name": "John Doe",
     "profile_pic": "/default-profile.jpg",
     "bio": "Full-stack developer passionate about open source and clean architecture.",
-    "skills": "JavaScript, React, Node.js, Python"
+    "skills": "JavaScript, React, Node.js, Python",
+    "is_self": "true"
 }</code></pre>
 
         <p class="response-condition">if user doesn't exist</p>
@@ -298,6 +299,62 @@
 
         <h4>Response</h4>
         <p class="response-condition">if details set successfully</p>
+        <pre class="response-success"><code>{
+    "status": "ok"
+}</code></pre>
+
+        <p class="response-condition">on error</p>
+        <pre class="response-failure"><code>{
+    "error": "...message..."
+}</code></pre>
+    </div>
+    
+    <div class="endpoint">
+        <h3>
+            <span class="method method-post">POST</span>
+            <span class="path">/change-profile-picture</span>
+        </h3>
+
+        <h4>Headers</h4>
+        <ul>
+            <li><code>api_key</code>: <strong>user_api_key</strong></li>
+            <li><code>content-type</code>: <strong>multipart/form-data</strong></li>
+        </ul>
+
+        <h4>Body</h4>
+        <p>FormData with the following field:</p>
+        <ul>
+           <li><code>image</code>: (File) The new profile picture image (required).</li>
+        </ul>
+
+        <h4>Response</h4>
+        <p class="response-condition">if upload and change succeeded</p>
+        <pre class="response-success"><code>{
+    "status": "ok"
+}</code></pre>
+
+        <p class="response-condition">on error</p>
+        <pre class="response-failure"><code>{
+    "error": "...message..."
+}</code></pre>
+    </div>
+
+
+    <div class="endpoint">
+        <h3>
+            <span class="method method-post">POST</span>
+            <span class="path">/delete-profile-picture</span>
+        </h3>
+
+        <h4>Headers</h4>
+        <ul>
+            <li><code>api_key</code>: <strong>user_api_key</strong></li>
+        </ul>
+
+        <p>No request body required.</p>
+
+        <h4>Response</h4>
+        <p class="response-condition">if delete succeeded</p>
         <pre class="response-success"><code>{
     "status": "ok"
 }</code></pre>
