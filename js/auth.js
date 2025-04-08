@@ -61,6 +61,36 @@ async function isDetailsSet(api_key) {
     }
 }
 
+function isValidUserUrl(url) {
+    try {
+      const { hostname, pathname } = new URL(url);
+  
+      // Must have at least subdomain.domain.tld (3 parts)
+      if (hostname.split('.').length < 3) return false;
+  
+      // Path must be exactly /u/username (no extra slashes)
+      return /^\/u\/[^/]+$/.test(pathname);
+    } catch {
+      return false; // Invalid URL
+    }
+  }
+
+function isProtectedPage() {
+    const pathname = window.location.pathname;
+
+    // Pages that always require auth
+    const protectedPages = ['index', 'set-username', 'user-details', ''];
+
+    // Get current file name
+    const currentPage = pathname.split("/").pop();
+
+    // Check for listed static pages
+    if (protectedPages.includes(currentPage)) return true;
+
+    // Check for dynamic user profile URL (/u/username)
+    return /^\/u\/[^/]+$/.test(pathname);
+}
+
 // --- Central Authentication State Listener ---
 auth.onAuthStateChanged(async user => {
     console.log("Auth state changed. User:", user);
@@ -79,6 +109,8 @@ auth.onAuthStateChanged(async user => {
         } else if (usernameSet && !detailsSet && currentPage !== 'user-details') {
             console.log("Details not set, redirecting to user-details");
             window.location.href = 'user-details';
+        } else if (usernameSet && detailsSet && isValidUserUrl(window.location.href)) {
+            console.log("User logged in and profile complete. Staying on current page.");
         } else if (usernameSet && detailsSet && (currentPage !== 'index' && currentPage !== '')) {
             console.log("User logged in and profile complete, redirecting to index");
             if (currentPage !== 'verify-email') {
@@ -95,11 +127,10 @@ auth.onAuthStateChanged(async user => {
         localStorage.removeItem(DETAILS_SET_FLAG);
 
         // Define pages that require authentication
-        const protectedPages = ['index', 'set-username', 'user-details', ''];
 
-        if (protectedPages.includes(currentPage)) {
+        if (isProtectedPage()) {
             console.log("User is on a protected page, redirecting to login");
-            window.location.href = 'login';
+            window.location.href = '/login';
         } else {
             console.log("User is logged out, staying on public page:", currentPage);
         }

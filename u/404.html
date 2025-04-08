@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile - Hackathon Finder</title>
+    <style>
+        /* === Base CSS === */
+        body {
+            font-family: sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 400px;
+            text-align: center;
+        }
+
+        h1, h2 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        /* Base button style */
+        button {
+            background-color: #5c67f2;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            width: 100%;
+            margin-top: 10px;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #4a54c4;
+        }
+
+        button:disabled {
+            background-color: #cccccc;
+            cursor: not-allowed;
+        }
+
+        /* Base link style (if needed elsewhere, kept for consistency) */
+        .links {
+            margin-top: 20px;
+            font-size: 14px;
+        }
+
+        .links a {
+            color: #5c67f2;
+            text-decoration: none;
+            margin: 0 5px;
+        }
+
+        .links a:hover {
+            text-decoration: underline;
+        }
+
+
+        /* === Profile Page Specific Styles === */
+
+        /* Adjust container for profile display */
+        .profile-container {
+            max-width: 500px; /* Slightly wider for better profile layout */
+            text-align: center; /* Keep overall centering */
+            padding: 40px; /* More padding for aesthetics */
+        }
+
+        .profile-pic {
+            width: 130px; /* Size of the profile picture */
+            height: 130px;
+            border-radius: 50%; /* Makes it circular */
+            object-fit: cover; /* Prevents image distortion */
+            margin-bottom: 15px;
+            border: 4px solid #e7e7e7; /* Subtle border */
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); /* Enhance shadow */
+        }
+
+        .profile-name {
+            margin-top: 0;
+            margin-bottom: 10px;
+            font-size: 1.8em; /* Larger name */
+            color: #333; /* Ensure dark color */
+        }
+
+        .profile-bio {
+            font-size: 1em;
+            color: #555; /* Slightly lighter than headings */
+            line-height: 1.6;
+            margin-bottom: 30px;
+            text-align: center; /* Center align the bio text */
+        }
+
+        .skills-section {
+            margin-bottom: 30px;
+        }
+
+        .skills-heading {
+            font-size: 1.1em;
+            color: #777;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .skills-list {
+            display: flex;
+            flex-wrap: wrap; /* Allow pills to wrap to the next line */
+            justify-content: center; /* Center the pills */
+            gap: 8px; /* Spacing between pills */
+        }
+
+        /* --- Pill Shape Styling --- */
+        .skill-pill {
+            background-color: #e1e4ff; /* Lighter shade inspired by button color */
+            color: #5c67f2; /* Use button color for text */
+            padding: 6px 15px; /* Padding inside the pill */
+            border-radius: 16px; /* Rounded edges for pill shape */
+            font-size: 0.9em;
+            font-weight: 500;
+            display: inline-block; /* Needed for padding and margin */
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            cursor: default; /* Indicate they aren't clickable unless intended */
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+
+        /* Optional: Hover effect for pills */
+        .skill-pill:hover {
+           background-color: #d1d6ff;
+           /* transform: translateY(-1px); */ /* Subtle lift effect */
+        }
+
+        /* Style for action buttons on profile */
+        .profile-actions {
+            margin-top: 25px;
+        }
+
+        /* Specific button style if needed, otherwise uses base */
+        .connect-button {
+            /* Inherits base button styles */
+             max-width: 200px; /* Make button less wide */
+             margin: 0 auto; /* Center button if max-width is set */
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="profile-container container">
+
+        <!-- Replace with actual image URL -->
+        <img src="/assets/default-profile.png" alt="Profile Picture" class="profile-pic" id="profile-pic">
+
+        <h2 id="profile-name" class="profile-name">Alex Chen</h2> <!-- Replace with dynamic name -->
+
+        <p class="profile-bio">
+            <!-- Replace with dynamic bio -->
+            Full-stack developer with a passion for creating intuitive web applications and solving complex problems. Eager to collaborate with creative minds in the upcoming hackathon. Let's build something amazing!
+        </p>
+
+        <div class="skills-section">
+            <h3 class="skills-heading">Skills</h3>
+            <div class="skills-list" id="skills-list">
+            </div>
+        </div>
+
+        <div class="profile-actions">
+             <button class="connect-button">Connect</button>
+             <!-- You could add more buttons here like "View Portfolio" -->
+        </div>
+
+    </div>
+    
+    <!-- Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+    <!-- Dashboard Logic -->
+    <script type="module" src="../js/u.js"></script>
+
+</body>
+</html>

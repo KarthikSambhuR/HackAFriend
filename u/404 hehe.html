@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Last URL Segment</title>
+</head>
+<body>
+  <h1>Last URL Segment</h1>
+  <p id="result"></p>
+
+  <script>
+    // Get the full path from the URL
+    const path = window.location.pathname;
+
+    // Split it by "/" and get the last non-empty part
+    const segments = path.split('/').filter(Boolean);
+    const lastSegment = segments[segments.length - 1] || '(none)';
+
+    // Show it on the page
+    document.getElementById('result').textContent = `Last segment: ${lastSegment}`;
+
+    // You can also use this value programmatically
+    console.log("Last segment:", lastSegment);
+  </script>
+</body>
+</html>
