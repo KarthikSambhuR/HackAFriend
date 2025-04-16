@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HackAFriend - Chats</title>
+    <link rel="stylesheet" href="style.css">
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="chat-list-page"> <!-- Optional specific body class -->
+    <div class="app-container">
+         <header class="page-header"><h1>Chats</h1></header>
+         <div class="chat-list">
+             <a href="chat-detail.html" class="chat-list-item"> <!-- Link to detail -->
+                 <img src="images/profile_riya.jpg" alt="Riya Kapoor">
+                 <div class="chat-preview">
+                     <span class="name">Riya Kapoor</span>
+                     <span class="last-message">Let's submit the Figma screens before 5 PM</span>
+                 </div>
+                 <div class="chat-info">
+                     <span class="time">02:17</span>
+                     <span class="unread-count">2</span>
+                 </div>
+             </a>
+             <a href="#" class="chat-list-item"> <!-- Link to Aditya's chat -->
+                  <img src="images/profile_aditya.jpg" alt="Aditya Menon">
+                  <div class="chat-preview">
+                     <span class="name">Aditya Menon</span>
+                     <span class="last-message">Frontend integration done! Check it out.</span>
+                 </div>
+                  <div class="chat-info">
+                     <span class="time">02:17</span>
+                     <!-- No unread count -->
+                 </div>
+             </a>
+             <a href="#" class="chat-list-item group"> <!-- Link to Team chat -->
+                 <img src="images/profile_pixelpushers.jpg" alt="Team PixelPushers"> <!-- Group image -->
+                  <div class="chat-preview">
+                     <span class="name">Team PixelPushers</span>
+                     <span class="last-message">Can someone review the pitch deck?</span>
+                 </div>
+                 <div class="chat-info">
+                     <span class="time">02:17</span>
+                     <span class="unread-count green">3</span>
+                 </div>
+             </a>
+              <a href="#" class="chat-list-item"> <!-- Link to Sarah's chat -->
+                   <img src="images/profile_sarah.jpg" alt="Sarah Liu">
+                   <div class="chat-preview">
+                     <span class="name">Sarah Liu</span>
+                     <span class="last-message">Shared the GitHub repo in the group.</span>
+                 </div>
+                   <div class="chat-info">
+                     <span class="time">02:17</span>
+                      <!-- No unread count -->
+                 </div>
+              </a>
+              <a href="#" class="chat-list-item group"> <!-- Link to DevDynamos chat -->
+                   <img src="images/profile_devdynamos.jpg" alt="DevDynamos">
+                   <div class="chat-preview">
+                     <span class="name">DevDynamos</span>
+                     <span class="last-message">We need a better name for our project lol</span>
+                 </div>
+                   <div class="chat-info">
+                     <span class="time">02:17</span>
+                     <span class="unread-count">1</span>
+                 </div>
+              </a>
+              <a href="#" class="chat-list-item"> <!-- Link to Rohan's chat -->
+                   <img src="images/profile_rohan.jpg" alt="Rohan Sinha">
+                   <div class="chat-preview">
+                     <span class="name">Rohan Sinha</span>
+                     <span class="last-message">API is throwing an error on POST. Help?</span>
+                 </div>
+                   <div class="chat-info">
+                     <span class="time">02:17</span>
+                     <span class="unread-count">2</span>
+                 </div>
+              </a>
+              <a href="#" class="chat-list-item"> <!-- Link to Mentor chat -->
+                   <img src="images/profile_meera.jpg" alt="Mentor: Meera J.">
+                    <div class="chat-preview">
+                     <span class="name">Mentor: Meera J.</span>
+                     <span class="last-message">Great progress! Don't forget to submit on time.</span>
+                 </div>
+                    <div class="chat-info">
+                     <span class="time">02:17</span>
+                      <!-- No unread count -->
+                 </div>
+              </a>
+         </div>
+    </div><!-- End .app-container -->
+
+    <!-- === START Navigation Bar (Copy from _nav.html) === -->
+    <nav class="bottom-nav">
+         <a href="hackathon-list.html" class="nav-item">
+            <img src="icons/hackathon.svg" alt="Hackathon">
+            <span>Hackathon</span>
+        </a>
+        <a href="search.html" class="nav-item">
+            <img src="icons/search.svg" alt="Search">
+            <span>Search</span>
+        </a>
+        <a href="home.html" class="nav-item">
+            <img src="icons/home.svg" alt="Home">
+            <span>Home</span>
+        </a>
+        <a href="chat-list.html" class="nav-item active"> <!-- Mark Chat as active -->
+            <img src="icons/chat.svg" alt="Chat">
+            <span>Chat</span>
+        </a>
+        <a href="settings.html" class="nav-item">
+            <img src="icons/settings.svg" alt="Settings">
+            <span>Settings</span>
+        </a>
+    </nav>
+    <!-- === END Navigation Bar === -->
+
+    <script src="script.js"></script>
+</body>
+</html>

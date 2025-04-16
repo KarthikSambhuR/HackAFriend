@@ -9,21 +9,20 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
-<body class="auth-page-body">
+<body class="auth-page-body"> <!-- Add specific body class -->
     <div class="auth-logo">
         <span class="hack">Hack</span><span class="afriend">AFriend</span>
         <p>Hack . Match . Win</p>
     </div>
-     <div class="app-container">
+    <div class="app-container">
         <div class="auth-card">
-            <h1>Reset Password</h1>
-             <form action="login.html" method="GET"> <!-- Simple GET redirect for demo -->
-                 <input type="email" placeholder="Email" required>
-                 <button type="submit" onclick="window.location.href = '/home.html'" class="btn btn-light">Reset Password</button>
-             </form>
-             <p style="margin-top: 15px; font-size: 14px;"><a href="login.html" style="color: var(--grey-dark); text-decoration: none;">Back to Login</a></p>
+            <h1>Find Your Hackathon Dream Team</h1>
+            <a href="signup.html" class="btn btn-dark">Sign Up</a>
+            <a href="login.html" class="btn btn-light">Login</a>
+            <a href="reset-password.html" class="forgot-password">Forgot Password?</a>
         </div>
     </div>
+    <!-- No Nav Bar on Auth -->
      <script src="script.js"></script>
 </body>
 </html>

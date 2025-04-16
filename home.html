@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HackAFriend - Home</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="home-body">
+    <div class="app-container">
+        <header class="home-header">
+            <div class="home-logo">
+                 <span class="hack">Hack</span><span class="afriend">AFriend</span>
+            </div>
+            <div class="notifications">
+                <img src="icons/bell.svg" alt="Notifications"> <!-- Replace with actual icon -->
+                <span class="notification-count">2</span>
+            </div>
+        </header>
+
+        <section class="suggested-profiles">
+            <h2>Suggested Profiles</h2>
+            <div class="profile-card-suggested">
+                <img src="images/profile_john_doe.png" alt="John Doe">
+                <div class="profile-info">
+                    <span class="name">John Doe</span>
+                    <span class="username">@john.doe_</span>
+                </div>
+                <button class="btn btn-follow">Follow</button> <!-- JS needed for toggle -->
+            </div>
+            <div class="profile-card-suggested">
+                <img src="images/profile_johnny_walker.jpg" alt="Johnny Walker">
+                 <div class="profile-info">
+                    <span class="name">Johnny Walker</span>
+                    <span class="username">@coolguy123</span>
+                </div>
+                <button class="btn btn-follow">Follow</button>
+            </div>
+             <div class="profile-card-suggested">
+                 <img src="images/profile_johnathan_doe.jpg" alt="Johnathan Doe">
+                 <div class="profile-info">
+                    <span class="name">Johnathan Doe</span>
+                    <span class="username">@johnathanisthebest</span>
+                </div>
+                 <button class="btn btn-follow">Follow</button>
+            </div>
+        </section>
+
+         <section class="upcoming-hackathons">
+            <h2>Upcoming Hackathons</h2>
+             <a href="hackathon-detail.html" class="hackathon-card-home"> <!-- Link the card -->
+                <img src="images/logo_placeholder.webp" alt="Virtual Vista Logo"> <!-- Placeholder -->
+                <div class="hackathon-info">
+                    <h3>VIRTUAL VISTA 2.0</h3>
+                    <div class="tags">
+                        <span class="tag paid"><img src="icons/paid.svg" alt="Paid">Paid</span>
+                        <span class="tag virtual"><img src="icons/virtual.svg" alt="Virtual">Virtual</span>
+                    </div>
+                    <p>IEEE-Computer Society of Guru Nanak Institutions Technical Campus, Hyderabad is thrilled to invite you all to participate and...</p>
+                </div>
+             </a>
+             <a href="hackathon-detail.html" class="hackathon-card-home"> <!-- Link the card -->
+                <img src="images/logo_hack_aesthetic.png" alt="Hack The Aesthetic Logo">
+                 <div class="hackathon-info">
+                    <h3>Hack the Aesthetic</h3>
+                     <div class="tags">
+                         <span class="tag paid"><img src="icons/paid.svg" alt="Paid">Paid</span>
+                         <span class="tag hybrid"><img src="icons/hybrid.svg" alt="Hybrid">Hybrid</span>
+                    </div>
+                    <p>"Hack the Aesthetic" is not your usual hackathon — it's a 24-hour sprint where creativity is the only code you need. From UX flows...</p>
+                </div>
+             </a>
+        </section>
+
+        <section class="team-requests">
+             <h2>Team Requests</h2>
+             <div class="team-request-card">
+                 <img src="images/profile_johnson_lee.jpg" alt="Johnson Lee">
+                 <div class="request-info">
+                    <span class="name">Johnson Lee</span>
+                    <span class="username">@johnlee</span>
+                </div>
+                 <button class="btn btn-accept">Accept</button> <!-- JS needed -->
+             </div>
+             <div class="team-request-card">
+                  <img src="images/profile_john_carter.jpg" alt="John Carter">
+                  <div class="request-info">
+                    <span class="name">John Carter</span>
+                    <span class="username">@john.carter</span>
+                </div>
+                  <button class="btn btn-accept">Accept</button>
+             </div>
+        </section>
+
+    </div><!-- End .app-container -->
+
+    <!-- === START Navigation Bar (Copy from _nav.html) === -->
+    <nav class="bottom-nav">
+        <a href="hackathon-list.html" class="nav-item">
+            <img src="icons/hackathon.svg" alt="Hackathon">
+            <span>Hackathon</span>
+        </a>
+        <a href="search.html" class="nav-item">
+            <img src="icons/search.svg" alt="Search">
+            <span>Search</span>
+        </a>
+        <a href="home.html" class="nav-item active"> <!-- Mark Home as active -->
+            <img src="icons/home.svg" alt="Home">
+            <span>Home</span>
+        </a>
+        <a href="chat-list.html" class="nav-item">
+            <img src="icons/chat.svg" alt="Chat">
+            <span>Chat</span>
+        </a>
+        <a href="settings.html" class="nav-item">
+            <img src="icons/settings.svg" alt="Settings">
+            <span>Settings</span>
+        </a>
+    </nav>
+    <!-- === END Navigation Bar === -->
+
+    <script src="script.js"></script>
+</body>
+</html>

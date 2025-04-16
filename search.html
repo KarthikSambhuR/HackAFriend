@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HackAFriend - Search</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="app-container">
+         <div class="search-bar">
+             <img src="icons/search.svg" class="search-icon">
+             <input type="text" placeholder="Search..." id="search-input" value="John"> <!-- Value preset -->
+             <a href="filters.html" class="filter-button"><img src="icons/filter.svg"></a>
+             <button class="clear-button">×</button> <!-- JS needed -->
+        </div>
+
+         <div class="search-results">
+             <!-- Search results populated -->
+              <a href="profile-view.html" class="profile-card-search">
+                  <img src="images/profile_john_doe.jpg" alt="John Doe">
+                  <div class="profile-info">
+                    <span class="name">John Doe</span>
+                    <span class="username">@john.doe_</span>
+                  </div>
+              </a>
+              <a href="#" class="profile-card-search"> <!-- Link to Johnny's profile -->
+                  <img src="images/profile_johnny_walker.jpg" alt="Johnny Walker">
+                   <div class="profile-info">
+                    <span class="name">Johnny Walker</span>
+                    <span class="username">@coolguy123</span>
+                  </div>
+              </a>
+              <a href="#" class="profile-card-search"> <!-- Link to Johnathan's profile -->
+                   <img src="images/profile_johnathan_doe.jpg" alt="Johnathan Doe">
+                   <div class="profile-info">
+                    <span class="name">Johnathan Doe</span>
+                    <span class="username">@johnathanisthebest</span>
+                  </div>
+              </a>
+              <a href="#" class="profile-card-search"> <!-- Link to John Paul's profile -->
+                   <img src="images/profile_john_paul.jpg" alt="John Paul">
+                    <div class="profile-info">
+                    <span class="name">John Paul</span>
+                    <span class="username">@thejohnpaul</span>
+                  </div>
+              </a>
+              <a href="#" class="profile-card-search"> <!-- Link to Johnson's profile -->
+                  <img src="images/profile_johnson_lee.jpg" alt="Johnson Lee">
+                   <div class="profile-info">
+                    <span class="name">Johnson Lee</span>
+                    <span class="username">@johnlee</span>
+                  </div>
+              </a>
+              <a href="#" class="profile-card-search"> <!-- Link to John Carter's profile -->
+                   <img src="images/profile_john_carter.jpg" alt="John Carter">
+                   <div class="profile-info">
+                    <span class="name">John Carter</span>
+                    <span class="username">@john.carter</span>
+                  </div>
+              </a>
+        </div>
+    </div><!-- End .app-container -->
+
+    <!-- === START Navigation Bar (Copy from _nav.html) === -->
+    <nav class="bottom-nav">
+         <a href="hackathon-list.html" class="nav-item">
+            <img src="icons/hackathon.svg" alt="Hackathon">
+            <span>Hackathon</span>
+        </a>
+        <a href="search.html" class="nav-item active"> <!-- Mark Search as active -->
+            <img src="icons/search.svg" alt="Search">
+            <span>Search</span>
+        </a>
+        <a href="home.html" class="nav-item">
+            <img src="icons/home.svg" alt="Home">
+            <span>Home</span>
+        </a>
+        <a href="chat-list.html" class="nav-item">
+            <img src="icons/chat.svg" alt="Chat">
+            <span>Chat</span>
+        </a>
+        <a href="settings.html" class="nav-item">
+            <img src="icons/settings.svg" alt="Settings">
+            <span>Settings</span>
+        </a>
+    </nav>
+    <!-- === END Navigation Bar === -->
+
+    <script src="script.js"></script>
+</body>
+</html>
