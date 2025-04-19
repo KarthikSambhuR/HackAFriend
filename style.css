@@ -1361,3 +1361,36 @@ body.skills-page-body { background-color: var(--background-light); }
     padding: 0; /* Reset padding */
     margin: 0; /* Reset margin */
 }
+
+/* --- Aspect Ratio Overlay --- */
+.aspect-ratio-overlay {
+    display: none; /* Hidden by default, shown via JS */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9); /* Darker overlay */
+    color: white;
+    justify-content: center; /* Center content horizontally */
+    align-items: center; /* Center content vertically */
+    z-index: 9999; /* Ensure it's on top of everything */
+    text-align: center;
+    font-family: var(--font-family);
+    -webkit-backdrop-filter: blur(5px); /* Optional: blur background */
+    backdrop-filter: blur(5px); /* Optional: blur background */
+}
+
+.aspect-ratio-overlay .overlay-content {
+    padding: 30px;
+    max-width: 450px; /* Limit message width */
+    line-height: 1.7;
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.aspect-ratio-overlay .overlay-content p:first-child {
+    font-weight: 600;
+    font-size: 20px;
+    margin-bottom: 15px;
+}
