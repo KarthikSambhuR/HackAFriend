@@ -1,372 +1,393 @@
-/* style.css - Consolidated and Updated */
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
-/* Basic Reset & Defaults */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
+
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    -webkit-tap-highlight-color: transparent; /* Prevent tap highlight on mobile */
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
 }
 
 :root {
-    --primary-green: #48e5a9; /* Adjust exact green from images */
-    --text-dark: #1a1a1a;
-    --text-light: #f8f8f8;
-    --grey-light: #f0f2f5;
-    --grey-medium: #e0e0e0;
-    --grey-dark: #888;
-    --background-light: #ffffff;
-    --background-dark: #000000; /* Or the dark shade in auth screens */
-    --font-family: 'Poppins', sans-serif; /* Or Inter, system-ui */
+  --primary-green: #48e5a9;
+  --text-dark: #1a1a1a;
+  --text-light: #f8f8f8;
+  --grey-light: #f0f2f5;
+  --grey-medium: #e0e0e0;
+  --grey-dark: #888;
+  --background-light: #ffffff;
+  --background-dark: #000000;
+  --font-family: "Poppins", sans-serif;
 }
 
 html {
-    height: 100%;
+  height: 100%;
 }
 
 body {
-    font-family: var(--font-family);
-    background-color: var(--background-light); /* Default page background */
-    color: var(--text-dark);
-    min-height: 100%;
-    display: flex;
-    flex-direction: column;
-    position: relative; /* Needed for fixed nav spacing */
+  font-family: var(--font-family);
+  background-color: var(--background-light);
+  color: var(--text-dark);
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  position: relative;
 }
 
-/* Reserve space for fixed nav only on pages that HAVE it */
-/* Exclude specific pages like auth, chat detail, profile view etc. */
-body:not(.auth-page-body):not(.chat-detail-body):not(.profile-view-body):not(.onboarding-body):not(.skills-page-body):not(.filter-page) {
-     padding-bottom: 65px;
+body:not(.auth-page-body):not(.chat-detail-body):not(.profile-view-body):not(
+    .onboarding-body
+  ):not(.skills-page-body):not(.filter-page) {
+  padding-bottom: 65px;
 }
-/* Ensure full height on specific pages */
-body.auth-page-body, body.onboarding-body, body.chat-detail-body {
-    height: 100vh;
-    overflow: hidden; /* Prevent body scroll on these full-screen layouts */
+
+body.auth-page-body,
+body.onboarding-body,
+body.chat-detail-body {
+  height: 100vh;
+  overflow: hidden;
 }
-/* Profile view needs scrolling, but still no bottom padding for nav */
+
 body.profile-view-body {
-    height: auto; /* Allow scrolling */
-    overflow-y: auto;
-    padding-bottom: 0 !important; /* Override any general rule for nav */
+  height: auto;
+  overflow-y: auto;
+  padding-bottom: 0 !important;
 }
-
 
 .app-container {
-    flex-grow: 1; /* Allow content to take up space */
-    padding: 15px; /* Default page padding */
-    /* Specific pages might override this padding */
+  flex-grow: 1;
+  padding: 15px;
 }
 
-/* Bottom Navigation Bar */
 .bottom-nav {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 65px; /* Adjust height */
-    background-color: var(--background-light);
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    border-top: 1px solid var(--grey-medium);
-    z-index: 1000;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 65px;
+  background-color: var(--background-light);
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  border-top: 1px solid var(--grey-medium);
+  z-index: 1000;
 }
 
 .nav-item {
-    background: none;
-    border: none;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    color: var(--grey-dark);
-    font-size: 10px;
-    padding: 5px 0;
-    flex-grow: 1;
-    cursor: pointer;
-    text-decoration: none; /* For anchor tags */
+  background: none;
+  border: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: var(--grey-dark);
+  font-size: 10px;
+  padding: 5px 0;
+  flex-grow: 1;
+  cursor: pointer;
+  text-decoration: none;
 }
 
 .nav-item img {
-    width: 24px; /* Adjust icon size */
-    height: 24px;
-    margin-bottom: 4px;
-    filter: grayscale(100%); /* Make inactive icons grey */
-    opacity: 0.7;
+  width: 24px;
+  height: 24px;
+  margin-bottom: 4px;
+  filter: grayscale(100%);
+  opacity: 0.7;
 }
 
 .nav-item.active {
-    color: var(--primary-green); /* Active color */
+  color: var(--primary-green);
 }
 
 .nav-item.active img {
-    filter: none;
-    opacity: 1;
+  filter: none;
+  opacity: 1;
 }
 
-/* General Button Styles */
 .btn {
-    display: inline-block;
-    padding: 12px 24px;
-    border: none;
-    border-radius: 30px; /* Rounded */
-    font-size: 16px;
-    font-weight: 600;
-    cursor: pointer;
-    text-align: center;
-    margin: 8px 0;
-    width: 100%; /* Default to full width */
-    text-decoration: none; /* Remove underline from links styled as buttons */
-    transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+  display: inline-block;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 30px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  text-align: center;
+  margin: 8px 0;
+  width: 100%;
+  text-decoration: none;
+  transition: background-color 0.2s ease, color 0.2s ease,
+    border-color 0.2s ease;
 }
 
 .btn-dark {
-    background-color: var(--text-dark);
-    color: var(--text-light);
+  background-color: var(--text-dark);
+  color: var(--text-light);
 }
-.btn-dark:hover { background-color: #333; }
+.btn-dark:hover {
+  background-color: #333;
+}
 
 .btn-light {
-    background-color: var(--background-light);
-    color: var(--text-dark);
-    border: 1px solid var(--grey-medium);
+  background-color: var(--background-light);
+  color: var(--text-dark);
+  border: 1px solid var(--grey-medium);
 }
-.btn-light:hover { background-color: var(--grey-light); }
+.btn-light:hover {
+  background-color: var(--grey-light);
+}
 
-.btn-follow, .btn-accept {
-    background-color: var(--primary-green);
-    color: var(--text-dark); /* Or white depending on contrast */
-    padding: 6px 20px;
-    font-size: 14px;
-    width: auto; /* Let follow/accept buttons size naturally */
-    border-radius: 20px;
+.btn-follow,
+.btn-accept {
+  background-color: var(--primary-green);
+  color: var(--text-dark);
+  padding: 6px 20px;
+  font-size: 14px;
+  width: auto;
+  border-radius: 20px;
 }
-.btn-follow:hover, .btn-accept:hover { background-color: #38d898; }
+.btn-follow:hover,
+.btn-accept:hover {
+  background-color: #38d898;
+}
 
 .btn-following {
-    background-color: transparent;
-    color: var(--text-dark);
-    border: 1px solid var(--grey-medium);
-    padding: 6px 20px;
-    font-size: 14px;
-    width: auto;
-    border-radius: 20px;
+  background-color: transparent;
+  color: var(--text-dark);
+  border: 1px solid var(--grey-medium);
+  padding: 6px 20px;
+  font-size: 14px;
+  width: auto;
+  border-radius: 20px;
 }
-.btn-following:hover { background-color: var(--grey-light); }
+.btn-following:hover {
+  background-color: var(--grey-light);
+}
 
 .btn-blue {
-    background-color: #29b6f6; /* Example blue */
-    color: var(--text-light);
+  background-color: #29b6f6;
+  color: var(--text-light);
 }
-.btn-blue:hover { background-color: #03a9f4; }
+.btn-blue:hover {
+  background-color: #03a9f4;
+}
 
 .btn-buy-tickets {
-     background-color: var(--primary-green);
-    color: var(--text-dark);
-    display: block; /* Needed for margin auto */
-    margin: 20px auto 0 auto; /* Center it */
+  background-color: var(--primary-green);
+  color: var(--text-dark);
+  display: block;
+  margin: 20px auto 0 auto;
 }
-.btn-buy-tickets:hover { background-color: #38d898; }
-
+.btn-buy-tickets:hover {
+  background-color: #38d898;
+}
 
 .btn-danger {
-     background-color: #f44336; /* Red */
-     color: white;
+  background-color: #f44336;
+  color: white;
 }
-.btn-danger:hover { background-color: #e53935; }
+.btn-danger:hover {
+  background-color: #e53935;
+}
 
-/* --- Onboarding Styles --- */
-body.onboarding-body { /* Use this class on onboarding.html body tag */
-    height: 100%;
-    overflow: hidden; /* Prevent scrolling the body itself */
+body.onboarding-body {
+  height: 100%;
+  overflow: hidden;
 }
 .onboarding-container {
-    height: 100%;
-    width: 100%;
-    overflow: hidden;
-    position: relative;
-    background-color: var(--background-light); /* Or specific onboarding background */
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  background-color: var(--background-light);
 }
 .onboarding-carousel {
-    display: flex;
-    height: calc(100% - 80px); /* Adjust height to leave space for dots/buttons */
-    width: 500%; /* 100% * number of slides */
-    transition: transform 0.4s ease-in-out;
+  display: flex;
+  height: calc(100% - 80px);
+  width: 500%;
+  transition: transform 0.4s ease-in-out;
 }
 .onboarding-slide {
-    width: 20%; /* 100% / number of slides */
-    height: 100%;
-    flex-shrink: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center; /* Center content vertically */
-    text-align: center;
-    padding: 30px 25px;
-    box-sizing: border-box;
+  width: 20%;
+  height: 100%;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 30px 25px;
+  box-sizing: border-box;
 }
 .onboarding-slide img {
-    max-width: 75%; /* Adjust image size */
-    max-height: 40%; /* Limit image height */
-    height: auto;
-    margin-bottom: 30px;
-    user-select: none; /* Prevent image selection */
-    -webkit-user-drag: none; /* Prevent image dragging */
+  max-width: 75%;
+  max-height: 40%;
+  height: auto;
+  margin-bottom: 30px;
+  user-select: none;
+  -webkit-user-drag: none;
 }
 .onboarding-slide h2 {
-    font-size: 22px; /* Slightly smaller */
-    font-weight: 700;
-    margin-bottom: 15px;
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 15px;
 }
 .onboarding-slide p {
-    font-size: 15px;
-    color: var(--grey-dark);
-    line-height: 1.6;
-    max-width: 300px;
+  font-size: 15px;
+  color: var(--grey-dark);
+  line-height: 1.6;
+  max-width: 300px;
 }
 .onboarding-controls {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    box-sizing: border-box;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-sizing: border-box;
 }
 .pagination-dots {
-    margin-bottom: 25px;
+  margin-bottom: 25px;
 }
 .dot {
-     display: inline-block; width: 8px; height: 8px; border-radius: 50%; background-color: var(--grey-medium); margin: 0 4px; transition: background-color 0.3s ease;
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: var(--grey-medium);
+  margin: 0 4px;
+  transition: background-color 0.3s ease;
 }
-.dot.active { background-color: var(--text-dark); }
+.dot.active {
+  background-color: var(--text-dark);
+}
 
 .onboarding-buttons {
-    display: flex;
-    justify-content: space-between; /* Default justification */
-    width: 100%;
-    padding: 0 10px; /* Add padding to space out buttons */
-    box-sizing: border-box;
-    align-items: center; /* Align buttons vertically */
-     min-height: 45px; /* Ensure space even if buttons are hidden */
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  padding: 0 10px;
+  box-sizing: border-box;
+  align-items: center;
+  min-height: 45px;
 }
 
 .onboarding-buttons .skip-button,
 .onboarding-buttons .get-started-button {
-    background: none;
-    border: none;
-    color: var(--grey-dark);
-    font-size: 16px;
-    cursor: pointer;
-    text-decoration: none;
-    padding: 10px; /* Make tap area larger */
-    visibility: visible; /* Default state */
-    opacity: 1;
-    transition: opacity 0.3s ease, visibility 0.3s ease;
+  background: none;
+  border: none;
+  color: var(--grey-dark);
+  font-size: 16px;
+  cursor: pointer;
+  text-decoration: none;
+  padding: 10px;
+  visibility: visible;
+  opacity: 1;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
 }
- .onboarding-buttons .get-started-button {
-    background-color: #29b6f6;
-    color: white;
-    padding: 12px 30px;
-    border-radius: 30px;
-    font-size: 16px;
-    font-weight: 600;
-    text-decoration: none;
-    visibility: hidden; /* Hidden by default */
-    opacity: 0;
+.onboarding-buttons .get-started-button {
+  background-color: #29b6f6;
+  color: white;
+  padding: 12px 30px;
+  border-radius: 30px;
+  font-size: 16px;
+  font-weight: 600;
+  text-decoration: none;
+  visibility: hidden;
+  opacity: 0;
 }
-.onboarding-buttons .get-started-button:hover { background-color: #03a9f4; }
+.onboarding-buttons .get-started-button:hover {
+  background-color: #03a9f4;
+}
 
-
-/* Hide skip on last slide, show Get Started */
 .onboarding-container[data-current-slide="4"] .skip-button {
-     visibility: hidden;
-     opacity: 0;
+  visibility: hidden;
+  opacity: 0;
 }
 .onboarding-container[data-current-slide="4"] .get-started-button {
-    visibility: visible;
-    opacity: 1;
+  visibility: visible;
+  opacity: 1;
 }
 
-/* Center the buttons container content when on the last slide */
 .onboarding-container[data-current-slide="4"] .onboarding-buttons {
-    justify-content: center; /* Override space-between */
+  justify-content: center;
 }
 
-/* --- Auth Page Specific Styles --- */
 .auth-page-body {
-    background-color: var(--background-dark);
-    display: flex; /* Use flexbox on body for auth layout */
-    flex-direction: column;
-    /* justify-content is moved to .app-container */
-    color: var(--text-light);
-    min-height: 100vh; /* Ensure full viewport height */
-    padding: 0; /* Remove default padding */
-    /* Add background circles if needed via background-image */
-    background-image: url('images/auth_bg.png'); /* Add your background image */
-    background-size: cover;
-    background-position: center top;
+  background-color: var(--background-dark);
+  display: flex;
+  flex-direction: column;
+
+  color: var(--text-light);
+  min-height: 100vh;
+  padding: 0;
+
+  background-image: url("images/auth_bg.png");
+  background-size: cover;
+  background-position: center top;
 }
-/* Container within Auth Body handles positioning */
+
 .auth-page-body .app-container {
-     padding: 0; /* Override default padding */
-     display: flex;
-     flex-direction: column;
-     justify-content: flex-end; /* Push card down within available space */
-     flex-grow: 1; /* Take up space */ /* Adjust value to lift card (e.g., 5vh, 15vh, 80px) */
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  flex-grow: 1;
 }
 
 .auth-logo {
-    position: absolute;
-    top: 50px; /* Adjust */
-    left: 50%;
-    transform: translateX(-50%);
-    text-align: center;
-    z-index: 1; /* Ensure logo is above card if overlapping happens */
-    white-space: nowrap; /* Keep HackAFriend on one line */
+  position: absolute;
+  top: 50px;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  z-index: 1;
+  white-space: nowrap;
 }
 
-.auth-logo .hack { color: var(--primary-green); }
-.auth-logo .afriend { color: var(--text-light); }
-.auth-logo span { /* Applied to both .hack and .afriend spans */
-    font-size: 36px;
-    font-weight: 700;
-    /* display: block; <-- REMOVED */
+.auth-logo .hack {
+  color: var(--primary-green);
+}
+.auth-logo .afriend {
+  color: var(--text-light);
+}
+.auth-logo span {
+  font-size: 36px;
+  font-weight: 700;
 }
 .auth-logo p {
-    font-size: 14px;
-    color: var(--text-light);
-    margin-top: 5px;
-    white-space: normal; /* Allow subtitle to wrap */
+  font-size: 14px;
+  color: var(--text-light);
+  margin-top: 5px;
+  white-space: normal;
 }
 
 .auth-card {
-    background: none; /* Container provides background */
-    color: var(--text-dark);
-    background-color: var(--background-light); /* White background below card */
-    padding: 40px 25px 30px 25px; /* More top padding */
-    border-radius: 30px 30px 0 0; /* Rounded top corners still visually provided */
-    text-align: center;
-    width: 100%;
-    position: relative; /* Ensure card is above container background potentially */
-    z-index: 2; /* Sit above container's white background */
-    padding-bottom: 10vh;
+  background: none;
+  color: var(--text-dark);
+  background-color: var(--background-light);
+  padding: 40px 25px 30px 25px;
+  border-radius: 30px 30px 0 0;
+  text-align: center;
+  width: 100%;
+  position: relative;
+  z-index: 2;
+  padding-bottom: 10vh;
 }
 .auth-card.profile-setup-card {
-    text-align: left;
+  text-align: left;
 }
 .auth-card.skills-card {
-    border-radius: 30px; /* Full rounded corners if it's not docked at bottom */
-     margin: 15px; /* Add margin if it's a standalone card */
+  border-radius: 30px;
+  margin: 15px;
 }
 
 .auth-card h1 {
-    font-size: 24px;
-    font-weight: 700;
-    margin-bottom: 25px;
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 25px;
 }
 
 .auth-card input[type="text"],
@@ -376,1021 +397,1226 @@ body.onboarding-body { /* Use this class on onboarding.html body tag */
 .auth-card input[type="date"],
 .auth-card input[type="number"],
 .auth-card select {
-    display: block;
-    width: 100%;
-    padding: 15px;
-    margin-bottom: 15px;
-    border: 1px solid var(--grey-medium);
-    border-radius: 15px;
-    font-size: 16px;
-    background-color: var(--grey-light); /* Light grey background for inputs */
-    font-family: var(--font-family); /* Inherit font */
-    color: var(--text-dark); /* Ensure text color is dark */
-}
-/* Style placeholder text */
-.auth-card input::placeholder,
-.auth-card select:required:invalid {
-    color: #999; /* Lighter placeholder text */
-}
-.auth-card select {
-     appearance: none; /* Remove default arrow */
-     -webkit-appearance: none;
-     -moz-appearance: none;
-     background-image: url('icons/dropdown-arrow.svg'); /* Add custom arrow */
-     background-repeat: no-repeat;
-     background-position: right 15px center;
-     background-size: 12px;
-     color: #555; /* Default select color when nothing selected */
-}
-.auth-card select:focus, .auth-card input:focus {
-    outline: none;
-    border-color: var(--primary-green);
-    box-shadow: 0 0 0 2px rgba(72, 229, 169, 0.2);
-}
-.auth-card option {
-    color: var(--text-dark); /* Actual option color */
+  display: block;
+  width: 100%;
+  padding: 15px;
+  margin-bottom: 15px;
+  border: 1px solid var(--grey-medium);
+  border-radius: 15px;
+  font-size: 16px;
+  background-color: var(--grey-light);
+  font-family: var(--font-family);
+  color: var(--text-dark);
 }
 
-/* Specific input styling */
+.auth-card input::placeholder,
+.auth-card select:required:invalid {
+  color: #999;
+}
+.auth-card select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-image: url("icons/dropdown-arrow.svg");
+  background-repeat: no-repeat;
+  background-position: right 15px center;
+  background-size: 12px;
+  color: #555;
+}
+.auth-card select:focus,
+.auth-card input:focus {
+  outline: none;
+  border-color: var(--primary-green);
+  box-shadow: 0 0 0 2px rgba(72, 229, 169, 0.2);
+}
+.auth-card option {
+  color: var(--text-dark);
+}
+
 .auth-card .phone-input {
-    display: flex;
-    align-items: center;
-    margin-bottom: 15px;
-    border: 1px solid var(--grey-medium);
-    border-radius: 15px;
-    background-color: var(--grey-light);
-    overflow: hidden; /* Clip corners */
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+  border: 1px solid var(--grey-medium);
+  border-radius: 15px;
+  background-color: var(--grey-light);
+  overflow: hidden;
 }
 .auth-card .phone-input span {
-    padding: 15px;
-    background-color: var(--grey-medium);
-    color: var(--text-dark);
-    font-weight: 500;
+  padding: 15px;
+  background-color: var(--grey-medium);
+  color: var(--text-dark);
+  font-weight: 500;
 }
 .auth-card .phone-input input[type="tel"] {
-    flex-grow: 1;
-    border: none;
-    margin-bottom: 0;
-    border-radius: 0; /* Remove individual radius */
-    background: none; /* Remove nested background */
-    padding-left: 10px; /* Add padding */
+  flex-grow: 1;
+  border: none;
+  margin-bottom: 0;
+  border-radius: 0;
+  background: none;
+  padding-left: 10px;
 }
-/* Simple date picker focus state */
-.auth-card input[type="date"] { color: #999; } /* Style placeholder state */
+
+.auth-card input[type="date"] {
+  color: #999;
+}
 .auth-card input[type="date"]:focus,
 .auth-card input[type="date"]:valid {
-    color: var(--text-dark); /* Show dark text when focused or valid */
+  color: var(--text-dark);
 }
 
 .auth-card .forgot-password {
-    display: block;
-    margin-top: 15px;
-    color: var(--grey-dark);
-    font-size: 14px;
-    text-decoration: none;
+  display: block;
+  margin-top: 15px;
+  color: var(--grey-dark);
+  font-size: 14px;
+  text-decoration: none;
 }
 .auth-card .forgot-password:hover {
-    text-decoration: underline;
+  text-decoration: underline;
 }
 .auth-card .btn {
-    margin-top: 10px;
+  margin-top: 10px;
 }
 
-/* --- Home Screen Styles --- */
-body.home-body { background-color: var(--grey-light); } /* Lighter bg for home */
+body.home-body {
+  background-color: var(--grey-light);
+}
 
 .home-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 0 15px 0; /* Adjust padding within app-container */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0 15px 0;
 }
 .home-logo {
-    white-space: nowrap; /* Keep HackAFriend on one line */
+  white-space: nowrap;
 }
-.home-logo .hack { color: var(--primary-green); }
-.home-logo .afriend { color: var(--text-dark); }
-.home-logo span { /* Applied to both .hack and .afriend spans */
-    font-size: 24px;
-    font-weight: 700;
-    /* display: block; <-- REMOVED */
+.home-logo .hack {
+  color: var(--primary-green);
+}
+.home-logo .afriend {
+  color: var(--text-dark);
+}
+.home-logo span {
+  font-size: 24px;
+  font-weight: 700;
 }
 
 .notifications {
-    position: relative;
-    cursor: pointer;
+  position: relative;
+  cursor: pointer;
 }
-.notifications img { width: 24px; height: 24px; }
+.notifications img {
+  width: 24px;
+  height: 24px;
+}
 .notification-count {
-    position: absolute;
-    top: -5px;
-    right: -5px;
-    background-color: red;
-    color: white;
-    border-radius: 50%;
-    width: 18px;
-    height: 18px;
-    font-size: 10px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-weight: bold;
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  background-color: red;
+  color: white;
+  border-radius: 50%;
+  width: 18px;
+  height: 18px;
+  font-size: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
 }
 
-section { margin-bottom: 25px; } /* Space between sections */
+section {
+  margin-bottom: 25px;
+}
 
 section h2 {
-    font-size: 18px;
-    font-weight: 600;
-    margin-bottom: 10px;
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 10px;
 }
 
-.profile-card-suggested, .team-request-card {
-    background-color: var(--background-light);
-    border-radius: 15px;
-    padding: 15px;
-    margin-bottom: 10px;
-    display: flex;
-    align-items: center;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+.profile-card-suggested,
+.team-request-card {
+  background-color: var(--background-light);
+  border-radius: 15px;
+  padding: 15px;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
 }
-.profile-card-suggested img, .team-request-card img {
-    width: 45px;
-    height: 45px;
-    border-radius: 50%;
-    margin-right: 15px;
-    object-fit: cover;
+.profile-card-suggested img,
+.team-request-card img {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  margin-right: 15px;
+  object-fit: cover;
 }
-.profile-card-suggested .profile-info, .team-request-card .request-info {
-    flex-grow: 1;
+.profile-card-suggested .profile-info,
+.team-request-card .request-info {
+  flex-grow: 1;
 }
-.profile-card-suggested .name, .team-request-card .name {
-    display: block;
-    font-weight: 600;
-    font-size: 15px;
+.profile-card-suggested .name,
+.team-request-card .name {
+  display: block;
+  font-weight: 600;
+  font-size: 15px;
 }
-.profile-card-suggested .username, .team-request-card .username {
-    display: block;
-    font-size: 13px;
-    color: var(--grey-dark);
+.profile-card-suggested .username,
+.team-request-card .username {
+  display: block;
+  font-size: 13px;
+  color: var(--grey-dark);
 }
 
 .hackathon-card-home {
-     background-color: var(--background-light);
-    border-radius: 15px;
-    padding: 15px;
-    margin-bottom: 10px;
-    display: flex;
-    align-items: flex-start; /* Align items to top */
-    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-    cursor: pointer;
-    text-decoration: none; /* Remove underline from link */
-    color: inherit; /* Inherit text color */
-    transition: background-color 0.2s ease;
+  background-color: var(--background-light);
+  border-radius: 15px;
+  padding: 15px;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: flex-start;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+  cursor: pointer;
+  text-decoration: none;
+  color: inherit;
+  transition: background-color 0.2s ease;
 }
-.hackathon-card-home:hover { background-color: var(--grey-light); /* Subtle hover */ }
+.hackathon-card-home:hover {
+  background-color: var(--grey-light);
+}
 
 .hackathon-card-home img {
-    width: 60px; /* Adjust size */
-    height: 60px;
-    border-radius: 10px;
-    margin-right: 15px;
-    object-fit: contain; /* Or cover */
-    background-color: var(--grey-light); /* BG if image is transparent */
-    flex-shrink: 0; /* Prevent image shrinking */
+  width: 60px;
+  height: 60px;
+  border-radius: 10px;
+  margin-right: 15px;
+  object-fit: contain;
+  background-color: var(--grey-light);
+  flex-shrink: 0;
 }
 .hackathon-card-home .hackathon-info {
-    flex-grow: 1;
-    min-width: 0; /* Allow text to wrap */
+  flex-grow: 1;
+  min-width: 0;
 }
 .hackathon-card-home h3 {
-    font-size: 16px;
-    font-weight: 600;
-    margin-bottom: 5px;
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 5px;
 }
 .hackathon-card-home .tags {
-    margin-bottom: 8px;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 5px;
+  margin-bottom: 8px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
 }
 .hackathon-card-home .tag {
-    display: inline-flex; /* Use flex for icon alignment */
-    align-items: center;
-    font-size: 10px;
-    padding: 3px 8px;
-    border-radius: 5px;
-    background-color: var(--grey-light);
-    color: var(--grey-dark);
-    font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  font-size: 10px;
+  padding: 3px 8px;
+  border-radius: 5px;
+  background-color: var(--grey-light);
+  color: var(--grey-dark);
+  font-weight: 500;
 }
-.hackathon-card-home .tag img { /* Style for icons inside tags */
-    width: 10px;
-    height: 10px;
-    margin-right: 4px;
-    opacity: 0.7;
-    flex-shrink: 0; /* Prevent icon shrinking */
-    /* Reset image styles inherited from card img */
-    border-radius: 0;
-    background-color: transparent;
+.hackathon-card-home .tag img {
+  width: 10px;
+  height: 10px;
+  margin-right: 4px;
+  opacity: 0.7;
+  flex-shrink: 0;
+
+  border-radius: 0;
+  background-color: transparent;
 }
-.hackathon-card-home .tag.paid { background-color: #e0f7fa; color: #00796b; } /* Example colors */
-.hackathon-card-home .tag.virtual { background-color: #f3e5f5; color: #6a1b9a; }
-.hackathon-card-home .tag.hybrid { background-color: #fff3e0; color: #ef6c00; }
+.hackathon-card-home .tag.paid {
+  background-color: #e0f7fa;
+  color: #00796b;
+}
+.hackathon-card-home .tag.virtual {
+  background-color: #f3e5f5;
+  color: #6a1b9a;
+}
+.hackathon-card-home .tag.hybrid {
+  background-color: #fff3e0;
+  color: #ef6c00;
+}
 .hackathon-card-home p {
-    font-size: 13px;
-    color: var(--grey-dark);
-    line-height: 1.4;
-    /* Limit text lines */
-    display: -webkit-box;
-    -webkit-line-clamp: 2; /* Show 2 lines */
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-    text-overflow: ellipsis;
+  font-size: 13px;
+  color: var(--grey-dark);
+  line-height: 1.4;
+
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
-/* --- Hackathon List / Detail Styles --- */
-.hackathon-list-page .app-container, .hackathon-detail-page .app-container {
-    padding-top: 0; /* Allow header/tabs to be flush */
-    padding-left: 0;
-    padding-right: 0;
+.hackathon-list-page .app-container,
+.hackathon-detail-page .app-container {
+  padding-top: 0;
+  padding-left: 0;
+  padding-right: 0;
 }
-.hackathon-list-page h1, .hackathon-detail-page h1 {
-    text-align: center;
-    padding: 15px; /* Add padding around title */
+.hackathon-list-page h1,
+.hackathon-detail-page h1 {
+  text-align: center;
+  padding: 15px;
 }
 .tabs {
-    display: flex;
-    justify-content: center;
-    margin: 0 15px 20px 15px; /* Margin around tabs */
-    background-color: var(--grey-medium); /* Tab background */
-    border-radius: 20px;
-    padding: 4px;
+  display: flex;
+  justify-content: center;
+  margin: 0 15px 20px 15px;
+  background-color: var(--grey-medium);
+  border-radius: 20px;
+  padding: 4px;
 }
 .tab-button {
-    flex: 1;
-    padding: 8px 15px;
-    border: none;
-    background-color: transparent;
-    border-radius: 18px;
-    cursor: pointer;
-    font-weight: 500;
-    color: var(--grey-dark);
-     transition: background-color 0.3s ease, color 0.3s ease;
+  flex: 1;
+  padding: 8px 15px;
+  border: none;
+  background-color: transparent;
+  border-radius: 18px;
+  cursor: pointer;
+  font-weight: 500;
+  color: var(--grey-dark);
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 .tab-button.active {
-    background-color: var(--background-light); /* Active tab background */
-    color: var(--text-dark);
-    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  background-color: var(--background-light);
+  color: var(--text-dark);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
-.hackathon-list-content { padding: 0 15px; } /* Add padding for list content */
-.hackathon-list-content .tab-content { display: none; }
-.hackathon-list-content .tab-content.active { display: block; }
-
-.hackathon-card-list { /* Reuse home card style or customize */
-    /* Inherits from .hackathon-card-home, add overrides if needed */
-     margin-bottom: 15px;
+.hackathon-list-content {
+  padding: 0 15px;
+}
+.hackathon-list-content .tab-content {
+  display: none;
+}
+.hackathon-list-content .tab-content.active {
+  display: block;
 }
 
-/* Hackathon Detail */
-.hackathon-detail-page .app-container { padding-bottom: 15px; } /* Add bottom padding */
+.hackathon-card-list {
+  margin-bottom: 15px;
+}
+
+.hackathon-detail-page .app-container {
+  padding-bottom: 15px;
+}
 
 .detail-header-container {
-     background-color: var(--text-dark); /* Dark header background */
-     color: var(--text-light);
-     padding: 40px 20px 80px 20px; /* Top padding, extra bottom padding for overlap */
-     position: relative;
-     z-index: 1;
+  background-color: var(--text-dark);
+  color: var(--text-light);
+  padding: 40px 20px 80px 20px;
+  position: relative;
+  z-index: 1;
 }
 .detail-header {
-     display: flex;
-     justify-content: space-between;
-     align-items: center;
-     font-size: 14px;
-     margin-bottom: 10px;
-     opacity: 0.8;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 14px;
+  margin-bottom: 10px;
+  opacity: 0.8;
 }
 .detail-header-container h1 {
-     font-size: 28px;
-     font-weight: 700;
-     margin-bottom: 10px;
-     color: var(--text-light);
-     padding: 0; /* Reset padding from general h1 */
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 10px;
+  color: var(--text-light);
+  padding: 0;
 }
 .price-info {
-     font-size: 16px;
-     color: var(--text-light);
-     opacity: 0.9;
+  font-size: 16px;
+  color: var(--text-light);
+  opacity: 0.9;
 }
-.price-info .price { font-size: 20px; font-weight: 600; color: var(--primary-green); }
-.price-info .gst { font-size: 12px; opacity: 0.7; margin-left: 5px; }
+.price-info .price {
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--primary-green);
+}
+.price-info .gst {
+  font-size: 12px;
+  opacity: 0.7;
+  margin-left: 5px;
+}
 
 .detail-card {
-    background-color: var(--background-light);
-    border-radius: 25px;
-    padding: 25px;
-    margin: -50px 15px 15px 15px; /* Negative margin for overlap, side/bottom margin */
-    position: relative;
-    z-index: 2;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  background-color: var(--background-light);
+  border-radius: 25px;
+  padding: 25px;
+  margin: -50px 15px 15px 15px;
+  position: relative;
+  z-index: 2;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
 .detail-card h2 {
-    font-size: 18px;
-    font-weight: 600;
-    margin-bottom: 10px;
-    margin-top: 20px; /* Space between sections */
-    padding: 0; /* Reset padding from general h2 */
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 10px;
+  margin-top: 20px;
+  padding: 0;
 }
-.detail-card h2:first-of-type { margin-top: 0; }
-.detail-card p, .detail-card ul {
-    font-size: 14px;
-    color: var(--grey-dark);
-    line-height: 1.7;
+.detail-card h2:first-of-type {
+  margin-top: 0;
 }
-.detail-card ul { list-style: none; padding-left: 0; }
-.detail-card li { margin-bottom: 8px; padding-left: 20px; position: relative; }
-/* Simple bullet points using pseudo-elements */
+.detail-card p,
+.detail-card ul {
+  font-size: 14px;
+  color: var(--grey-dark);
+  line-height: 1.7;
+}
+.detail-card ul {
+  list-style: none;
+  padding-left: 0;
+}
+.detail-card li {
+  margin-bottom: 8px;
+  padding-left: 20px;
+  position: relative;
+}
+
 .detail-card ul:not(.ticket-list):not(.prizes) li::before {
-    content: '•';
-    position: absolute;
-    left: 0;
-    color: var(--primary-green);
-    font-weight: bold;
+  content: "•";
+  position: absolute;
+  left: 0;
+  color: var(--primary-green);
+  font-weight: bold;
 }
-.detail-card .prizes li { padding-left: 30px; } /* Space for icon */
-.detail-card .prizes li span { /* Icon styling */
-    position: absolute;
-    left: 0;
-    top: 2px; /* Adjust vertical alignment */
-    font-size: 18px;
+.detail-card .prizes li {
+  padding-left: 30px;
+}
+.detail-card .prizes li span {
+  position: absolute;
+  left: 0;
+  top: 2px;
+  font-size: 18px;
 }
 
 .detail-card .participation-certs {
-    font-size: 12px;
-    text-align: center;
-    margin-top: 10px;
-    color: var(--grey-dark);
+  font-size: 12px;
+  text-align: center;
+  margin-top: 10px;
+  color: var(--grey-dark);
 }
 
 .ticket-list li {
-    display: flex;
-    justify-content: space-between;
-    padding-left: 0; /* Remove padding for tickets */
-     border-bottom: 1px dashed var(--grey-light);
-     padding-bottom: 8px;
+  display: flex;
+  justify-content: space-between;
+  padding-left: 0;
+  border-bottom: 1px dashed var(--grey-light);
+  padding-bottom: 8px;
 }
-.ticket-list li:last-child { border-bottom: none; }
-.ticket-list .ticket-price { font-weight: 600; color: var(--text-dark); }
+.ticket-list li:last-child {
+  border-bottom: none;
+}
+.ticket-list .ticket-price {
+  font-weight: 600;
+  color: var(--text-dark);
+}
 
-/* --- Search & Filter Styles --- */
 .search-bar {
-    display: flex;
-    align-items: center;
-    background-color: var(--background-light); /* White background for bar */
-    border-radius: 25px;
-    padding: 5px 10px 5px 15px; /* Adjust padding */
-    margin-bottom: 20px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.08);
-    position: sticky; /* Make search bar sticky */
-    top: 10px; /* Stick below potential header */
-    z-index: 10;
+  display: flex;
+  align-items: center;
+  background-color: var(--background-light);
+  border-radius: 25px;
+  padding: 5px 10px 5px 15px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.08);
+  position: sticky;
+  top: 10px;
+  z-index: 10;
 }
-.search-bar .search-icon { width: 20px; height: 20px; margin-right: 8px; opacity: 0.5; flex-shrink: 0;}
+.search-bar .search-icon {
+  width: 20px;
+  height: 20px;
+  margin-right: 8px;
+  opacity: 0.5;
+  flex-shrink: 0;
+}
 .search-bar input {
-    flex-grow: 1;
-    border: none;
-    outline: none;
-    font-size: 16px;
-    padding: 8px 0;
-    background: none;
+  flex-grow: 1;
+  border: none;
+  outline: none;
+  font-size: 16px;
+  padding: 8px 0;
+  background: none;
 }
 .search-bar button {
-    background: none;
-    border: none;
-    padding: 5px;
-    margin-left: 5px;
-    cursor: pointer;
-    flex-shrink: 0;
+  background: none;
+  border: none;
+  padding: 5px;
+  margin-left: 5px;
+  cursor: pointer;
+  flex-shrink: 0;
 }
-.search-bar .filter-button img { width: 22px; height: 22px; display: block;}
-.search-bar .clear-button { font-size: 20px; color: var(--grey-dark); line-height: 1;}
+.search-bar .filter-button img {
+  width: 22px;
+  height: 22px;
+  display: block;
+}
+.search-bar .clear-button {
+  font-size: 20px;
+  color: var(--grey-dark);
+  line-height: 1;
+}
 .search-bar .filter-button {
-     background-color: var(--primary-green);
-     border-radius: 50%;
-     padding: 6px;
-     display: flex; /* Center icon */
-     align-items: center;
-     justify-content: center;
+  background-color: var(--primary-green);
+  border-radius: 50%;
+  padding: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
-.search-bar .filter-button img { width: 18px; height: 18px; filter: brightness(0) invert(0.1); /* Make icon dark */}
-
+.search-bar .filter-button img {
+  width: 18px;
+  height: 18px;
+  filter: brightness(0) invert(0.1);
+}
 
 .search-results {
-    /* Styles for results list */
 }
-.profile-card-search { /* Can reuse suggested card or customize */
-    background-color: var(--background-light);
-    border-radius: 15px;
-    padding: 15px;
-    margin-bottom: 10px;
-    display: flex;
-    align-items: center;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-    text-decoration: none;
-    color: inherit;
-    transition: background-color 0.2s ease;
+.profile-card-search {
+  background-color: var(--background-light);
+  border-radius: 15px;
+  padding: 15px;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+  text-decoration: none;
+  color: inherit;
+  transition: background-color 0.2s ease;
 }
-.profile-card-search:hover { background-color: var(--grey-light); }
+.profile-card-search:hover {
+  background-color: var(--grey-light);
+}
 
 .profile-card-search img {
-    width: 45px;
-    height: 45px;
-    border-radius: 50%;
-    margin-right: 15px;
-    object-fit: cover;
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  margin-right: 15px;
+  object-fit: cover;
 }
-.profile-card-search .profile-info { /* Reuse info class or make specific */
-    flex-grow: 1;
+.profile-card-search .profile-info {
+  flex-grow: 1;
 }
-.profile-card-search .name { display: block; font-weight: 600; }
-.profile-card-search .username { display: block; font-size: 13px; color: var(--grey-dark); }
+.profile-card-search .name {
+  display: block;
+  font-weight: 600;
+}
+.profile-card-search .username {
+  display: block;
+  font-size: 13px;
+  color: var(--grey-dark);
+}
 
-/* Filter Page */
-body.filter-page { overflow-y: auto; height: auto;} /* Allow scrolling */
-.filter-page .app-container { padding: 0 15px 15px 15px; } /* Adjust padding */
+body.filter-page {
+  overflow-y: auto;
+  height: auto;
+}
+.filter-page .app-container {
+  padding: 0 15px 15px 15px;
+}
 .filter-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 15px 0;
-    margin-bottom: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 0;
+  margin-bottom: 15px;
 }
-.filter-header .back-button { background: none; border: none; font-size: 24px; cursor: pointer; padding: 5px; color: var(--text-dark); text-decoration: none;}
-.filter-header h1 { font-size: 20px; font-weight: 600; padding: 0; margin: 0;}
-.filter-header .reset-button { background: none; border: none; color: var(--primary-green); font-size: 14px; cursor: pointer; padding: 5px;}
+.filter-header .back-button {
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  padding: 5px;
+  color: var(--text-dark);
+  text-decoration: none;
+}
+.filter-header h1 {
+  font-size: 20px;
+  font-weight: 600;
+  padding: 0;
+  margin: 0;
+}
+.filter-header .reset-button {
+  background: none;
+  border: none;
+  color: var(--primary-green);
+  font-size: 14px;
+  cursor: pointer;
+  padding: 5px;
+}
 
-.filter-section { margin-bottom: 25px; }
-.filter-section h2 { font-size: 16px; font-weight: 600; margin-bottom: 15px; padding: 0;}
-.filter-tags { display: flex; flex-wrap: wrap; gap: 10px; }
-/* Reuse .skill-tag style or create specific .filter-tag */
+.filter-section {
+  margin-bottom: 25px;
+}
+.filter-section h2 {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 15px;
+  padding: 0;
+}
+.filter-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
 .filter-tag {
-    background-color: var(--background-light);
-    border: 1px solid var(--grey-medium);
-    color: var(--text-dark);
-    border-radius: 20px;
-    padding: 8px 18px;
-    font-size: 14px;
-    cursor: pointer;
-     transition: background-color 0.2s ease, border-color 0.2s ease;
+  background-color: var(--background-light);
+  border: 1px solid var(--grey-medium);
+  color: var(--text-dark);
+  border-radius: 20px;
+  padding: 8px 18px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.2s ease, border-color 0.2s ease;
 }
-.filter-tag:hover { background-color: var(--grey-light); }
+.filter-tag:hover {
+  background-color: var(--grey-light);
+}
 .filter-tag.selected {
-    background-color: var(--primary-green);
-    border-color: var(--primary-green);
-    color: var(--text-dark);
+  background-color: var(--primary-green);
+  border-color: var(--primary-green);
+  color: var(--text-dark);
 }
 
-.filter-section select { /* Reuse auth select style */
-    display: block; width: 100%; padding: 15px; margin-bottom: 15px; border: 1px solid var(--grey-medium); border-radius: 15px; font-size: 16px; background-color: var(--grey-light); appearance: none; -webkit-appearance: none; -moz-appearance: none; background-image: url('icons/dropdown-arrow.svg'); background-repeat: no-repeat; background-position: right 15px center; background-size: 12px; color: #555; font-family: var(--font-family);
+.filter-section select {
+  display: block;
+  width: 100%;
+  padding: 15px;
+  margin-bottom: 15px;
+  border: 1px solid var(--grey-medium);
+  border-radius: 15px;
+  font-size: 16px;
+  background-color: var(--grey-light);
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-image: url("icons/dropdown-arrow.svg");
+  background-repeat: no-repeat;
+  background-position: right 15px center;
+  background-size: 12px;
+  color: #555;
+  font-family: var(--font-family);
 }
 .filter-section select:focus {
-    outline: none; border-color: var(--primary-green); box-shadow: 0 0 0 2px rgba(72, 229, 169, 0.2);
+  outline: none;
+  border-color: var(--primary-green);
+  box-shadow: 0 0 0 2px rgba(72, 229, 169, 0.2);
 }
 
-.age-slider { /* Basic structure - real slider needs more work */
-    position: relative; height: 30px; /* Space for labels */ margin-top: 10px;
+.age-slider {
+  position: relative;
+  height: 30px;
+  margin-top: 10px;
 }
-.age-slider input[type="range"] { width: 100%; position: absolute; left: 0; top: 0; }
-/* You'll need JS to update the visual range and labels */
-.age-labels { display: flex; justify-content: space-between; font-size: 12px; color: var(--grey-dark); position: absolute; bottom: -5px; width: 100%; padding: 0 5px; }
-
-.btn-apply-filters { /* Use standard button style */
-    margin-top: 20px;
-    background-color: var(--primary-green);
-    color: var(--text-dark);
+.age-slider input[type="range"] {
+  width: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
 }
-.btn-apply-filters:hover { background-color: #38d898; }
 
+.age-labels {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+  color: var(--grey-dark);
+  position: absolute;
+  bottom: -5px;
+  width: 100%;
+  padding: 0 5px;
+}
 
-/* --- Chat List Styles --- */
-.chat-list-page .app-container { padding-top: 10px; }
+.btn-apply-filters {
+  margin-top: 20px;
+  background-color: var(--primary-green);
+  color: var(--text-dark);
+}
+.btn-apply-filters:hover {
+  background-color: #38d898;
+}
+
+.chat-list-page .app-container {
+  padding-top: 10px;
+}
 .chat-list-page .page-header {
-     padding: 0 0 15px 0; /* Adjust padding */
-     margin-bottom: 5px;
-     border-bottom: none;
+  padding: 0 0 15px 0;
+  margin-bottom: 5px;
+  border-bottom: none;
 }
 .chat-list-page .page-header h1 {
-    font-size: 28px;
-    font-weight: 700;
-    text-align: left;
-    padding: 0; /* Override global */
+  font-size: 28px;
+  font-weight: 700;
+  text-align: left;
+  padding: 0;
 }
 
 .chat-list-item {
-    display: flex;
-    align-items: center;
-    padding: 12px 0; /* Padding between items */
-    border-bottom: 1px solid var(--grey-light);
-    cursor: pointer;
-    text-decoration: none;
-    color: inherit;
-    transition: background-color 0.2s ease;
+  display: flex;
+  align-items: center;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--grey-light);
+  cursor: pointer;
+  text-decoration: none;
+  color: inherit;
+  transition: background-color 0.2s ease;
 }
-.chat-list-item:last-child { border-bottom: none; }
-.chat-list-item:hover { background-color: rgba(0,0,0,0.02); }
+.chat-list-item:last-child {
+  border-bottom: none;
+}
+.chat-list-item:hover {
+  background-color: rgba(0, 0, 0, 0.02);
+}
 
 .chat-list-item img {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    margin-right: 15px;
-    object-fit: cover;
-    flex-shrink: 0;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin-right: 15px;
+  object-fit: cover;
+  flex-shrink: 0;
 }
 .chat-list-item .chat-preview {
-    flex-grow: 1;
-    overflow: hidden; /* Prevent text overflow */
-    min-width: 0; /* Allow text to wrap/ellipsis */
+  flex-grow: 1;
+  overflow: hidden;
+  min-width: 0;
 }
 .chat-list-item .name {
-    display: block;
-    font-weight: 600;
-    margin-bottom: 3px;
-    font-size: 16px;
+  display: block;
+  font-weight: 600;
+  margin-bottom: 3px;
+  font-size: 16px;
 }
 .chat-list-item .last-message {
-    display: block;
-    font-size: 14px;
-    color: var(--grey-dark);
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+  display: block;
+  font-size: 14px;
+  color: var(--grey-dark);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .chat-list-item .chat-info {
-    text-align: right;
-    font-size: 12px;
-    color: var(--grey-dark);
-    margin-left: 10px;
-    flex-shrink: 0;
+  text-align: right;
+  font-size: 12px;
+  color: var(--grey-dark);
+  margin-left: 10px;
+  flex-shrink: 0;
 }
 .chat-list-item .time {
-    display: block;
-    margin-bottom: 5px;
+  display: block;
+  margin-bottom: 5px;
 }
 .chat-list-item .unread-count {
-    display: inline-block;
-    background-color: var(--primary-green);
-    color: var(--text-dark); /* Or white */
-    border-radius: 50%;
-    min-width: 20px;
-    height: 20px;
-    padding: 2px;
-    font-size: 12px;
-    font-weight: bold;
-    text-align: center;
-    line-height: 17px; /* Adjust for vertical centering */
+  display: inline-block;
+  background-color: var(--primary-green);
+  color: var(--text-dark);
+  border-radius: 50%;
+  min-width: 20px;
+  height: 20px;
+  padding: 2px;
+  font-size: 12px;
+  font-weight: bold;
+  text-align: center;
+  line-height: 17px;
 }
-.chat-list-item .unread-count.green { /* Example for team count */
-     background-color: #00c853; /* Different green */
-     color: white;
+.chat-list-item .unread-count.green {
+  background-color: #00c853;
+  color: white;
 }
 
-
-/* --- Chat Detail Styles --- */
-.chat-detail-body { padding-bottom: 0; overflow: hidden; } /* Remove body padding as header/footer are fixed */
+.chat-detail-body {
+  padding-bottom: 0;
+  overflow: hidden;
+}
 .chat-detail-page {
-    display: flex;
-    flex-direction: column;
-    height: 100vh; /* Full height */
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
 }
 .chat-header {
-    display: flex;
-    align-items: center;
-    padding: 10px 15px;
-    background-color: var(--background-light);
-    border-bottom: 1px solid var(--grey-light);
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    z-index: 100;
-    box-sizing: border-box; /* Include padding in width */
-    height: 65px; /* Match nav bar height? */
+  display: flex;
+  align-items: center;
+  padding: 10px 15px;
+  background-color: var(--background-light);
+  border-bottom: 1px solid var(--grey-light);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 100;
+  box-sizing: border-box;
+  height: 65px;
 }
 .chat-header .back-button {
-    background: none; border: none; font-size: 24px; margin-right: 10px; cursor: pointer; color: var(--text-dark); padding: 5px; text-decoration: none; line-height: 1;}
-.chat-header img {
-    width: 40px; height: 40px; margin-right: 10px;
+  background: none;
+  border: none;
+  font-size: 24px;
+  margin-right: 10px;
+  cursor: pointer;
+  color: var(--text-dark);
+  padding: 5px;
+  text-decoration: none;
+  line-height: 1;
 }
-.chat-header-info { flex-grow: 1; }
-.chat-header-info .name { font-weight: 600; display: block; }
-.chat-header-info .status { font-size: 12px; color: var(--primary-green); /* Or grey for offline */}
-.chat-actions button { background: none; border: none; margin-left: 10px; cursor: pointer; padding: 5px;}
-.chat-actions button img { width: 24px; height: 24px; display: block;}
+.chat-header img {
+  width: 40px;
+  height: 40px;
+  margin-right: 10px;
+}
+.chat-header-info {
+  flex-grow: 1;
+}
+.chat-header-info .name {
+  font-weight: 600;
+  display: block;
+}
+.chat-header-info .status {
+  font-size: 12px;
+  color: var(--primary-green);
+}
+.chat-actions button {
+  background: none;
+  border: none;
+  margin-left: 10px;
+  cursor: pointer;
+  padding: 5px;
+}
+.chat-actions button img {
+  width: 24px;
+  height: 24px;
+  display: block;
+}
 
 .message-area {
-    flex-grow: 1;
-    overflow-y: auto;
-    padding: 15px;
-    padding-top: 80px; /* Space for fixed header (65 + 15) */
-    padding-bottom: 80px; /* Space for fixed input */
-    background-color: var(--grey-light); /* Chat background */
-    /* Add chat background pattern */
-    background-image: url('images/chat_bg_pattern.png'); /* Find or create pattern */
-    background-repeat: repeat;
-    background-size: 300px; /* Adjust pattern size */
+  flex-grow: 1;
+  overflow-y: auto;
+  padding: 15px;
+  padding-top: 80px;
+  padding-bottom: 80px;
+  background-color: var(--grey-light);
+
+  background-image: url("images/chat_bg_pattern.png");
+  background-repeat: repeat;
+  background-size: 300px;
 }
 
 .message-group {
-    margin-bottom: 10px;
-    display: flex;
-    flex-direction: column;
+  margin-bottom: 10px;
+  display: flex;
+  flex-direction: column;
 }
-.message-group.sent { align-items: flex-end; }
-.message-group.received { align-items: flex-start; }
+.message-group.sent {
+  align-items: flex-end;
+}
+.message-group.received {
+  align-items: flex-start;
+}
 
 .message {
-    max-width: 75%; /* Limit message width */
-    padding: 10px 15px;
-    border-radius: 18px;
-    font-size: 15px;
-    line-height: 1.4;
-    word-wrap: break-word;
-    box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+  max-width: 75%;
+  padding: 10px 15px;
+  border-radius: 18px;
+  font-size: 15px;
+  line-height: 1.4;
+  word-wrap: break-word;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
 }
 .message-group.sent .message {
-    background-color: #dcf8c6; /* WhatsApp-like sent color */
-    /* background-color: var(--primary-green); */ /* Original green */
-    color: var(--text-dark);
-    border-bottom-right-radius: 5px; /* Bubble tail */
+  background-color: #dcf8c6;
+
+  color: var(--text-dark);
+  border-bottom-right-radius: 5px;
 }
 .message-group.received .message {
-    background-color: var(--background-light); /* Received bubble color */
-    color: var(--text-dark);
-    border-bottom-left-radius: 5px; /* Bubble tail */
+  background-color: var(--background-light);
+  color: var(--text-dark);
+  border-bottom-left-radius: 5px;
 }
 .message-group .timestamp {
-    font-size: 11px;
-    color: var(--grey-dark);
-    margin-top: 4px;
-    margin-left: 5px; /* Adjust alignment */
-    margin-right: 5px; /* Adjust alignment */
+  font-size: 11px;
+  color: var(--grey-dark);
+  margin-top: 4px;
+  margin-left: 5px;
+  margin-right: 5px;
 }
 
 .chat-input-area {
-    display: flex;
-    align-items: center;
-    padding: 10px 15px;
-    background-color: var(--grey-light); /* Match message area background */
-    border-top: 1px solid var(--grey-medium);
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    z-index: 100;
-     box-sizing: border-box; /* Include padding in width */
-     min-height: 60px; /* Ensure minimum height */
+  display: flex;
+  align-items: center;
+  padding: 10px 15px;
+  background-color: var(--grey-light);
+  border-top: 1px solid var(--grey-medium);
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  z-index: 100;
+  box-sizing: border-box;
+  min-height: 60px;
 }
-.chat-input-wrapper { /* Wrapper for rounded input+button */
-    display: flex;
-    flex-grow: 1;
-    background-color: var(--background-light);
-    border-radius: 25px;
-    padding: 5px 5px 5px 15px; /* Adjust padding */
-    align-items: center;
-    margin-right: 10px;
+.chat-input-wrapper {
+  display: flex;
+  flex-grow: 1;
+  background-color: var(--background-light);
+  border-radius: 25px;
+  padding: 5px 5px 5px 15px;
+  align-items: center;
+  margin-right: 10px;
 }
 
 .chat-input-wrapper input {
-    flex-grow: 1;
-    padding: 8px 0; /* Adjust padding */
-    border: none;
-    background: none;
-    font-size: 15px;
-    outline: none;
+  flex-grow: 1;
+  padding: 8px 0;
+  border: none;
+  background: none;
+  font-size: 15px;
+  outline: none;
 }
 .chat-input-area .send-button {
-    background-color: var(--primary-green);
-    border: none;
-    border-radius: 50%;
-    width: 40px;
-    height: 40px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    /* margin-left: 8px; */
-    flex-shrink: 0;
-    transition: background-color 0.2s ease;
+  background-color: var(--primary-green);
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+
+  flex-shrink: 0;
+  transition: background-color 0.2s ease;
 }
-.chat-input-area .send-button:hover { background-color: #38d898; }
-.chat-input-area .send-button img { width: 22px; height: 22px; filter: brightness(0) invert(0.1); /* Dark icon */ display: block;}
+.chat-input-area .send-button:hover {
+  background-color: #38d898;
+}
+.chat-input-area .send-button img {
+  width: 22px;
+  height: 22px;
+  filter: brightness(0) invert(0.1);
+  display: block;
+}
 
-
-/* --- Profile View Styles (Incorporating Updates) --- */
-/* body.profile-view-body already defined above */
-
-.profile-view-page { /* Use this class on the app-container div */
-     padding: 0; /* Edge-to-edge content */
+.profile-view-page {
+  padding: 0;
 }
 
 .profile-view-page .back-button {
-    position: absolute;
-    top: 15px; /* Adjust as needed */
-    left: 15px;
-    z-index: 10;
-    background: rgba(0,0,0,0.3); /* Semi-transparent black */
-    color: white;
-    border: none;
-    border-radius: 50%;
-    width: 35px; /* Adjust size */
-    height: 35px;
-    font-size: 20px;
-    font-weight: bold;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-decoration: none;
-    line-height: 1; /* Better vertical alignment */
-    transition: background-color 0.2s ease;
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  z-index: 10;
+  background: rgba(0, 0, 0, 0.3);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 35px;
+  height: 35px;
+  font-size: 20px;
+  font-weight: bold;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  line-height: 1;
+  transition: background-color 0.2s ease;
 }
 .profile-view-page .back-button:hover {
-     background: rgba(0,0,0,0.5);
+  background: rgba(0, 0, 0, 0.5);
 }
 
 .profile-banner-image {
-    width: 100%;
-    height: 280px; /* Adjust height as per image */
-    object-fit: cover; /* Crop image nicely */
-    display: block; /* Remove extra space below image */
-    border-radius: 0 0 25px 25px; /* Rounded bottom corners */
+  width: 100%;
+  height: 280px;
+  object-fit: cover;
+  display: block;
+  border-radius: 0 0 25px 25px;
 }
 .profile-main-info {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px 20px 5px 20px; /* Padding around name/button */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 20px 5px 20px;
 }
 .profile-main-info h1 {
-    font-size: 24px;
-    font-weight: 700;
-    padding: 0; /* Override global style if any */
-    margin: 0; /* Override global style if any */
-    color: var(--text-dark); /* Ensure dark text */
+  font-size: 24px;
+  font-weight: 700;
+  padding: 0;
+  margin: 0;
+  color: var(--text-dark);
 }
-.profile-follow-btn { /* Targets both .btn-follow and .btn-following in this context */
-    width: auto; /* Let button size naturally */
-    flex-shrink: 0; /* Prevent button shrinking */
-    /* Specific styles for .btn-follow and .btn-following are already defined globally */
+.profile-follow-btn {
+  width: auto;
+  flex-shrink: 0;
 }
 .profile-sub-info {
-    font-size: 14px;
-    color: var(--grey-dark);
-    padding: 0 20px 20px 20px; /* Padding below main info */
-    line-height: 1.5;
+  font-size: 14px;
+  color: var(--grey-dark);
+  padding: 0 20px 20px 20px;
+  line-height: 1.5;
 }
 
-/* Action Buttons (Only shown via HTML in Following State) */
 .profile-action-buttons {
-    display: flex;
-    justify-content: space-around; /* Distribute buttons */
-    align-items: center;
-    padding: 15px 20px;
-    background-color: var(--background-light); /* Light background for this section */
-    margin: 0 20px 20px 20px; /* Margin around the section */
-    border-radius: 15px; /* Rounded corners */
-    box-shadow: 0 2px 8px rgba(0,0,0,0.08); /* Subtle shadow */
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 15px 20px;
+  background-color: var(--background-light);
+  margin: 0 20px 20px 20px;
+  border-radius: 15px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
 }
 .profile-action-buttons button {
-    background: none;
-    border: none;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    font-size: 12px;
-    color: var(--grey-dark); /* Dark grey text */
-    cursor: pointer;
-    gap: 5px; /* Space between icon and text */
-    padding: 5px;
-    font-family: var(--font-family); /* Ensure font */
+  background: none;
+  border: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 12px;
+  color: var(--grey-dark);
+  cursor: pointer;
+  gap: 5px;
+  padding: 5px;
+  font-family: var(--font-family);
 }
 .profile-action-buttons button img {
-    width: 24px; /* Icon size */
-    height: 24px;
-    display: block;
-    opacity: 0.7; /* Slightly faded icons */
+  width: 24px;
+  height: 24px;
+  display: block;
+  opacity: 0.7;
 }
 .profile-action-buttons button:hover {
-    color: var(--text-dark); /* Darker text on hover */
+  color: var(--text-dark);
 }
 .profile-action-buttons button:hover img {
-    opacity: 1; /* Full opacity on hover */
+  opacity: 1;
 }
 
 .profile-bio-card {
-    background-color: var(--primary-green); /* Green background for bio */
-    color: var(--text-dark); /* Dark text on green */
-    padding: 20px;
-    border-radius: 20px;
-    margin: 20px; /* Margin around the card */
-    font-size: 14px;
-    line-height: 1.6;
+  background-color: var(--primary-green);
+  color: var(--text-dark);
+  padding: 20px;
+  border-radius: 20px;
+  margin: 20px;
+  font-size: 14px;
+  line-height: 1.6;
 }
 .profile-bio-card h2 {
-    font-size: 16px;
-    font-weight: 600;
-    margin-bottom: 10px;
-    padding: 0;
-    color: inherit; /* Inherit color from parent (.profile-bio-card) */
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 10px;
+  padding: 0;
+  color: inherit;
 }
 
 .profile-skills-tags {
-    padding: 0 20px 20px 20px; /* Padding below bio/actions */
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px; /* Space between tags */
+  padding: 0 20px 20px 20px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
 }
-.profile-skills-tags .skill-tag { /* Style for tags on profile */
-    background-color: var(--background-light); /* White background */
-    border: 1px solid var(--grey-light); /* Light border */
-    color: var(--text-dark);
-    border-radius: 20px;
-    padding: 6px 15px; /* Adjust padding */
-    font-size: 13px;
-    cursor: default; /* Not clickable on profile view */
-    box-shadow: 0 1px 2px rgba(0,0,0,0.05); /* Very subtle shadow */
+.profile-skills-tags .skill-tag {
+  background-color: var(--background-light);
+  border: 1px solid var(--grey-light);
+  color: var(--text-dark);
+  border-radius: 20px;
+  padding: 6px 15px;
+  font-size: 13px;
+  cursor: default;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
 }
 
-/* Follow Prompt (Only shown via HTML in Not Following State) */
 .profile-follow-prompt {
-    background-color: #fff9c4; /* Yellowish info box */
-    color: #5d4037; /* Darker brown text */
-    padding: 15px;
-    margin: 0 20px 20px 20px; /* Margin below tags */
-    border-radius: 10px;
-    display: flex;
-    align-items: center;
-    font-size: 14px;
-    font-weight: 500;
-    text-align: center; /* Center content */
-    justify-content: center; /* Center horizontally */
+  background-color: #fff9c4;
+  color: #5d4037;
+  padding: 15px;
+  margin: 0 20px 20px 20px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  font-weight: 500;
+  text-align: center;
+  justify-content: center;
 }
 .profile-follow-prompt img {
-    width: 20px;
-    height: 20px;
-    margin-right: 10px;
+  width: 20px;
+  height: 20px;
+  margin-right: 10px;
 }
 
-/* Contact Info (Only shown via HTML in Following State) */
 .profile-contact-info {
-    padding: 20px;
-    margin: 0 20px 20px 20px; /* Consistent margin */
-    background-color: var(--grey-light); /* Light grey background */
-    border-radius: 15px;
-    font-size: 14px;
-    line-height: 1.8; /* Spacing between lines */
+  padding: 20px;
+  margin: 0 20px 20px 20px;
+  background-color: var(--grey-light);
+  border-radius: 15px;
+  font-size: 14px;
+  line-height: 1.8;
 }
 .profile-contact-info p {
-    margin-bottom: 10px;
-    color: var(--text-dark); /* Ensure text is dark */
+  margin-bottom: 10px;
+  color: var(--text-dark);
 }
 .profile-contact-info p:last-child {
-    margin-bottom: 0;
+  margin-bottom: 0;
 }
 .profile-contact-info strong {
-    font-weight: 600;
-    margin-right: 5px;
-    color: var(--text-dark); /* Ensure label is dark */
+  font-weight: 600;
+  margin-right: 5px;
+  color: var(--text-dark);
 }
 
-
-/* --- Skills Page Styles --- */
-body.skills-page-body { background-color: var(--background-light); }
-.skills-page .app-container { padding: 15px; } /* Add padding back */
-.skills-page h1 { text-align: center; margin: 20px 0 25px 0; font-size: 24px; padding: 0;}
-.skills-tags { /* Style for tags on setup/filter pages */
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    justify-content: center; /* Center tags */
-    margin-bottom: 30px;
-    padding: 0; /* Remove extra padding */
+body.skills-page-body {
+  background-color: var(--background-light);
 }
-.skill-tag { /* Shared style for clickable tags */
-    background-color: var(--background-light);
-    border: 1px solid var(--grey-medium);
-    color: var(--text-dark);
-    border-radius: 20px;
-    padding: 8px 18px;
-    font-size: 14px;
-    cursor: pointer;
-    transition: background-color 0.2s ease, border-color 0.2s ease;
+.skills-page .app-container {
+  padding: 15px;
 }
-.skill-tag:hover { background-color: var(--grey-light); }
-.skill-tag.selected { /* Style when selected in setup/filters */
-    background-color: var(--primary-green);
-    border-color: var(--primary-green);
-    color: var(--text-dark);
+.skills-page h1 {
+  text-align: center;
+  margin: 20px 0 25px 0;
+  font-size: 24px;
+  padding: 0;
+}
+.skills-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+  margin-bottom: 30px;
+  padding: 0;
+}
+.skill-tag {
+  background-color: var(--background-light);
+  border: 1px solid var(--grey-medium);
+  color: var(--text-dark);
+  border-radius: 20px;
+  padding: 8px 18px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+.skill-tag:hover {
+  background-color: var(--grey-light);
+}
+.skill-tag.selected {
+  background-color: var(--primary-green);
+  border-color: var(--primary-green);
+  color: var(--text-dark);
 }
 
 .add-skill-input {
-    display: flex;
-    border: 1px solid var(--grey-medium);
-    border-radius: 25px;
-    overflow: hidden;
-    margin: 0 0 30px 0; /* Remove horizontal margin */
-    background-color: var(--grey-light);
+  display: flex;
+  border: 1px solid var(--grey-medium);
+  border-radius: 25px;
+  overflow: hidden;
+  margin: 0 0 30px 0;
+  background-color: var(--grey-light);
 }
 .add-skill-input input {
-    flex-grow: 1;
-    border: none;
-    padding: 15px;
-    font-size: 16px;
-    background: none;
-    outline: none;
+  flex-grow: 1;
+  border: none;
+  padding: 15px;
+  font-size: 16px;
+  background: none;
+  outline: none;
 }
 .add-skill-input button {
-    background: none;
-    border: none;
-    font-size: 24px;
-    padding: 0 20px;
-    color: var(--grey-dark);
-    cursor: pointer;
+  background: none;
+  border: none;
+  font-size: 24px;
+  padding: 0 20px;
+  color: var(--grey-dark);
+  cursor: pointer;
 }
-.skills-page .btn-blue { margin: 0; } /* Remove margin */
+.skills-page .btn-blue {
+  margin: 0;
+}
 
-/* --- Settings Page --- */
-.settings-page .page-header h1 { text-align: left; padding: 0; }
+.settings-page .page-header h1 {
+  text-align: left;
+  padding: 0;
+}
 .settings-content {
-    padding: 20px 0;
-    text-align: center; /* Center content initially */
+  padding: 20px 0;
+  text-align: center;
 }
 .settings-content p {
-    margin-bottom: 20px;
-    color: var(--grey-dark);
+  margin-bottom: 20px;
+  color: var(--grey-dark);
 }
-/* Style setting links */
+
 .settings-content a:not(.btn) {
-     display: block;
-     padding: 15px 0; /* Add padding */
-     margin-bottom: 5px; /* Space between items */
-     color: var(--text-dark);
-     text-decoration: none;
-     background-color: var(--grey-light); /* Give items a background */
-     border-radius: 10px;
-     text-align: left; /* Align text left */
-     padding-left: 15px;
-     transition: background-color 0.2s ease;
+  display: block;
+  padding: 15px 0;
+  margin-bottom: 5px;
+  color: var(--text-dark);
+  text-decoration: none;
+  background-color: var(--grey-light);
+  border-radius: 10px;
+  text-align: left;
+  padding-left: 15px;
+  transition: background-color 0.2s ease;
 }
 .settings-content a:not(.btn):hover {
-    background-color: var(--grey-medium);
+  background-color: var(--grey-medium);
 }
-.settings-content .btn-danger { margin-top: 30px; }
+.settings-content .btn-danger {
+  margin-top: 30px;
+}
 
-/* General Header Style (used in chat list, settings, hackathon list) */
 .page-header {
-    padding: 15px 0; /* Default padding, adjust per page if needed */
-    margin-bottom: 10px; /* Space below header */
-    /* border-bottom: 1px solid var(--grey-light); */ /* Optional border */
+  padding: 15px 0;
+  margin-bottom: 10px;
 }
 .page-header h1 {
-    font-size: 28px;
-    font-weight: 700;
-    padding: 0; /* Reset padding */
-    margin: 0; /* Reset margin */
+  font-size: 28px;
+  font-weight: 700;
+  padding: 0;
+  margin: 0;
 }
 
-/* --- Aspect Ratio Overlay --- */
 .aspect-ratio-overlay {
-    display: none; /* Hidden by default, shown via JS */
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.9); /* Darker overlay */
-    color: white;
-    justify-content: center; /* Center content horizontally */
-    align-items: center; /* Center content vertically */
-    z-index: 9999; /* Ensure it's on top of everything */
-    text-align: center;
-    font-family: var(--font-family);
-    -webkit-backdrop-filter: blur(5px); /* Optional: blur background */
-    backdrop-filter: blur(5px); /* Optional: blur background */
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.9);
+  color: white;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  text-align: center;
+  font-family: var(--font-family);
+  -webkit-backdrop-filter: blur(5px);
+  backdrop-filter: blur(5px);
 }
 
 .aspect-ratio-overlay .overlay-content {
-    padding: 30px;
-    max-width: 450px; /* Limit message width */
-    line-height: 1.7;
-    font-size: 18px;
-    font-weight: 500;
+  padding: 30px;
+  max-width: 450px;
+  line-height: 1.7;
+  font-size: 18px;
+  font-weight: 500;
 }
 
 .aspect-ratio-overlay .overlay-content p:first-child {
-    font-weight: 600;
-    font-size: 20px;
-    margin-bottom: 15px;
+  font-weight: 600;
+  font-size: 20px;
+  margin-bottom: 15px;
 }

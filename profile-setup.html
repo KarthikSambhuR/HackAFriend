@@ -1,21 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
 <head> /* ... Head content same as welcome ... */ </head>
-<body class="auth-page-body"> <!-- Can reuse auth background -->
+<body class="auth-page-body"> 
     <div class="auth-logo">
         <span class="hack">Hack</span><span class="afriend">AFriend</span>
         <p>Hack . Match . Win</p>
     </div>
     <div class="app-container">
-         <div class="auth-card profile-setup-card"> <!-- Specific class for profile setup -->
+         <div class="auth-card profile-setup-card"> 
             <h1>Profile Setup</h1>
-             <form action="skills-setup.html" method="GET"> <!-- Simple GET redirect for demo -->
+             <form action="skills-setup.html" method="GET"> 
                 <input type="text" placeholder="Full Name" required>
                 <div class="phone-input">
                     <span>+91</span>
                     <input type="tel" placeholder="Phone No" required>
                 </div>
-                <input type="text" placeholder="Date of Birth" onfocus="(this.type='date')" onblur="(this.type='text')" required> <!-- Simple date picker trick -->
+                <input type="text" placeholder="Date of Birth" onfocus="(this.type='date')" onblur="(this.type='text')" required> 
                 <select required>
                     <option value="" disabled selected>Gender</option>
                     <option value="male">Male</option>
@@ -27,14 +27,14 @@
                     <option value="" disabled selected>College</option>
                     <option value="college1">Example College of Engineering</option>
                     <option value="college2">Another Institute of Technology</option>
-                    <!-- Add more college options -->
+                    
                 </select>
                 <select required>
                     <option value="" disabled selected>Course & Branch</option>
                     <option value="cse">Computer Science & Engineering</option>
                     <option value="ece">Electronics & Communication</option>
                     <option value="mech">Mechanical Engineering</option>
-                    <!-- Add more options -->
+                    
                  </select>
                 <input type="number" placeholder="Year of Passing" min="1980" max="2040" required>
                 <button type="submit" class="btn btn-dark">Continue</button>
